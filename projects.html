@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Projects — Muhammad Ahsan Sheikh</title>
+<meta name="description" content="Data tools, research, and platforms built by Muhammad Ahsan Sheikh — OOH campaign analytics, AI-assisted donation redistribution, and photocatalytic billboard research.">
+<meta name="theme-color" content="#faf7f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131210" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Projects — Muhammad Ahsan Sheikh">
+<meta property="og:description" content="Data tools, research, and platforms — OOH campaign analytics, AI-assisted donation redistribution, and photocatalytic billboard research.">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://muhammadahsan-30.github.io/projects.html">
+<meta property="og:image" content="https://muhammadahsan-30.github.io/assets/share-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Muhammad Ahsan Sheikh — Mathematics and Business Administration, University of Waterloo">
+<meta name="twitter:image" content="https://muhammadahsan-30.github.io/assets/share-card.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%238a3f2b'/><text y='71' x='50' text-anchor='middle' font-size='62' font-family='Georgia,serif' fill='%23faf7f2'>M</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="topbar" id="topbar">
+  <div class="wrap-wide">
+    <a class="mark" href="index.html">Muhammad <em>Ahsan Sheikh</em></a>
+    <nav class="topnav">
+      <a href="index.html">About</a>
+      <a class="on" href="projects.html">Projects</a>
+      <a href="experience.html">Experience</a>
+      <a class="cta" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <div class="pagehead">
+    <p class="eyebrow">Selected work</p>
+    <h1>Things I've <em>built</em></h1>
+  </div>
+
+  <!-- ============ OOH ============ -->
+  <section id="ooh" class="rv">
+    <div class="shead"><span class="snum">01</span><h2>OOH Campaign Performance Analyzer</h2><span class="rule"></span></div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3><a href="analyzer/index.html">Open the dashboard</a><span class="badge live">Live</span></h3>
+        <span class="meta">2026</span>
+      </div>
+      <a class="preview" href="analyzer/index.html">
+        <span class="frame"><iframe src="analyzer/index.html" loading="lazy" title="OOH Campaign Performance Analyzer dashboard" scrolling="no" tabindex="-1"></iframe><span class="veil"></span></span>
+        <span class="open">Open the dashboard →</span>
+        <span class="cap">LIVE. FILTER BY CLIENT, CITY AND FORMAT</span>
+      </a>
+      <p class="sub">
+        Agencies find OOH under-delivery by hand at end of campaign. I spent five months inside a
+        WPP/GroupM agency watching that happen; this finds it continuously instead.
+      </p>
+      <ul>
+        <li>Tracks <b>CAD 7.69m</b> of media spend across <b>563 placements</b> and <b>34,888</b> daily delivery records</li>
+        <li>Flags <b>57 placements (10%)</b> delivering below contract and quantifies the <b>CAD 207,923</b> of spend attached to the shortfall</li>
+        <li>Python and SQL do the analysis; the dashboard only renders what the tests already cover</li>
+      </ul>
+      <div class="stack"><span>Python</span><span>pandas</span><span>SQL</span><span>SQLite</span><span>Chart.js</span><span>pytest</span></div>
+      <div class="links">
+        <a class="btn primary" href="analyzer/index.html">Open live ↗</a>
+        <a class="btn" href="https://github.com/muhammadahsan-30" target="_blank" rel="noopener">Source ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Smog ============ -->
+  <section id="smog" class="rv">
+    <div class="shead"><span class="snum">02</span><h2>Smog-Eating Billboard</h2><span class="rule"></span></div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3><a href="https://en.dailypakistan.com.pk/16-Oct-2024/smog-eating-technology-is-need-of-the-hour-to-combat-pollution-in-lahore" target="_blank" rel="noopener">Feasibility research</a><span class="badge pub">Published</span></h3>
+        <span class="meta">Oct 2024</span>
+      </div>
+      <figure class="shot">
+        <img src="assets/smog-billboard.jpg" alt="Concept mockup of a photocatalytic billboard" loading="lazy">
+        <figcaption>Concept mockup. The coating is invisible, so the billboard sells as normal while the surface works</figcaption>
+      </figure>
+      <p class="sub">
+        Lahore has 1,150+ advertising hoardings in direct sun and an air quality index of 207 (January
+        2024). I modeled whether coating that surface with photocatalytic titanium dioxide would move
+        air quality enough to justify the cost.
+      </p>
+      <ul>
+        <li>Modeled the effect of retrofitting Lahore's <b>1,150+ hoardings</b> with photocatalytic coatings, estimating pollutant removal equivalent to <b>292,800 trees over six hours</b></li>
+        <li>Identified the supply constraint: titanium dioxide is not produced in Pakistan</li>
+        <li>Built the case on <b>cost-benefit grounds</b>, which is the version that persuades a media owner: smog discolours conventional billboard skins faster, so the cleaning and replacement cycle already costs advertisers more than the retrofit would</li>
+      </ul>
+      <div class="stack"><span>Research</span><span>Cost-Benefit Analysis</span><span>Technical Writing</span></div>
+      <div class="links">
+        <a class="btn" href="https://en.dailypakistan.com.pk/16-Oct-2024/smog-eating-technology-is-need-of-the-hour-to-combat-pollution-in-lahore" target="_blank" rel="noopener">Read in Daily Pakistan ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BarakahLink ============ -->
+  <section id="barakah" class="rv">
+    <div class="shead"><span class="snum">03</span><h2>BarakahLink</h2><span class="rule"></span></div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3><a href="https://barakahlink.vercel.app" target="_blank" rel="noopener">Community donation platform</a><span class="badge live">Live</span></h3>
+        <span class="meta">Jan 2026</span>
+      </div>
+      <a class="shot" href="https://barakahlink.vercel.app" target="_blank" rel="noopener">
+        <img src="https://image.thum.io/get/width/1000/crop/620/noanimate/https://barakahlink.vercel.app"
+             alt="Screenshot of the BarakahLink platform" loading="lazy"
+             onerror="this.closest('.shot').classList.add('noimg')">
+        <figcaption>barakahlink.vercel.app, live</figcaption>
+      </a>
+      <p class="sub">
+        A donation-redistribution platform built for communities where the constraint is
+        connectivity. Most giving platforms assume a smartphone and stable data; many who need
+        them have neither.
+      </p>
+      <ul>
+        <li><b>Unstructured input handling.</b> Google Gemini turns messy, free-text donation offers into organized listings and need summaries written to preserve the dignity of the person asking</li>
+        <li><b>SMS-style access</b> through a simulated gateway, so the platform works without an app or reliable data</li>
+        <li><b>Hyper-local mapping</b> so donations surface to people close enough to actually collect them, rather than to whoever happens to be browsing</li>
+      </ul>
+      <div class="stack"><span>Python</span><span>Google Gemini API</span><span>TypeScript</span><span>Leaflet</span></div>
+      <div class="links">
+        <a class="btn primary" href="https://barakahlink.vercel.app" target="_blank" rel="noopener">Open live ↗</a>
+        <a class="btn" href="https://github.com/muhammadahsan-30/BarakahLink" target="_blank" rel="noopener">Source ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="closing rv">
+    <p>The analyzer is <em>live</em>. More on the way.</p>
+    <div class="links">
+      <a class="btn primary" href="contact.html">Get in touch</a>
+      <a class="btn" href="https://github.com/muhammadahsan-30">GitHub</a>
+      <a class="btn" href="resume.pdf">Resume</a>
+    </div>
+  </div>
+
+  <footer>
+    <span>© <span class="yr">2026</span> Muhammad Ahsan Sheikh</span>
+    <nav>
+      <a href="index.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="experience.html">Experience</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </footer>
+
+</main>
+<script src="assets/site.js"></script>
+</body>
+</html>
