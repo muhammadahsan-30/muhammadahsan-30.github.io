@@ -251,10 +251,15 @@ h2{font-family:var(--serif); font-weight:400; font-size:1.6rem; letter-spacing:-
 .status dd b{font-weight:500}
 /* Dates live at the end of the row, not in the label column. The column stays
    one kind of thing -- a label -- and the date is still there to read.
-   --faint on --paper is 4.60:1. */
+   --faint on --paper is 4.60:1.
+
+   The markup carries a real space before this element as well as the margin
+   here. The margin alone separated it on screen but left the text content as
+   "practice.Apr-Jul 2026", which is what you get when you copy the row or
+   listen to it. Spacing you can only see is not spacing. */
 .stamp{
   font-family:var(--mono); font-size:.71rem; color:var(--faint);
-  letter-spacing:.06em; white-space:nowrap; margin-left:8px;
+  letter-spacing:.06em; white-space:nowrap; margin-left:7px;
 }
 .status dd span.stamp{color:var(--faint)}
 @media (max-width:540px){
