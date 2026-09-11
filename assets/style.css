@@ -34,9 +34,11 @@
     --ink:#ece7de; --muted:#a49c91; --faint:#8a8279; --rule:#2b2822;
     --accent:#d98a68; --accent-soft:#33241d;
     --accent-2:#78b4b7; --accent-2-soft:#1d2a2b;
-    /* Slightly more present in dark, where a near-black ground swallows the
-       light-mode value entirely. 1.96:1 against --paper. */
-    --dot:color-mix(in srgb,var(--rule) 85%,var(--ink));
+    /* LOWER contrast than light, not higher. A light dot on a near-black
+       ground is picked up far more readily than a dark dot on cream, so
+       matching the light value's 1.42:1 here reads as noise competing with
+       body text. Pulled back to 1.25:1 against --paper. */
+    --dot:color-mix(in srgb,var(--rule) 92%,var(--paper));
     /* 6.94:1 on the dark --accent, against 2.70:1 for white. */
     --accent-ink:var(--paper);
     --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
@@ -247,6 +249,14 @@ h2{font-family:var(--serif); font-weight:400; font-size:1.6rem; letter-spacing:-
 .status dd{margin:0; padding:16px 0; border-bottom:1px solid var(--rule); font-size:.95rem}
 .status dd span{color:var(--muted)}
 .status dd b{font-weight:500}
+/* Dates live at the end of the row, not in the label column. The column stays
+   one kind of thing -- a label -- and the date is still there to read.
+   --faint on --paper is 4.60:1. */
+.stamp{
+  font-family:var(--mono); font-size:.71rem; color:var(--faint);
+  letter-spacing:.06em; white-space:nowrap; margin-left:8px;
+}
+.status dd span.stamp{color:var(--faint)}
 @media (max-width:540px){
   .status dl{grid-template-columns:1fr}
   .status dt{padding:16px 0 2px; border-bottom:none}
