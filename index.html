@@ -100,6 +100,18 @@
       </div>
     </div>
 
+    <!-- Figures that already appear in full context on the Projects and
+         Experience pages, surfaced here at the size they deserve. The media
+         figure is read from the analyzer payload at runtime; the value in the
+         markup is the current correct number and is what shows if the script
+         never loads. -->
+    <div class="statband">
+      <div class="stat"><span class="fig">16.38%</span><span class="lab">WACC derived</span></div>
+      <div class="stat"><span class="fig" data-ooh="spend_m">$5.4M</span><span class="lab">Media tracked</span></div>
+      <div class="stat"><span class="fig">12,000+</span><span class="lab">Sites planned</span></div>
+      <div class="stat"><span class="fig">292,800</span><span class="lab">Trees equivalent</span></div>
+    </div>
+
     <div class="links">
       <a class="btn primary" href="resume.pdf">Resume</a>
       <a class="btn" href="projects.html">Projects</a>
@@ -113,9 +125,9 @@
   <div class="status rv">
     <dl>
       <dt>Apr&ndash;Jul 2026</dt>
-      <dd><b>Business Advisory at KPMG</b>. <span>Valuation and three-statement modeling inside the Deal Advisory practice.</span></dd>
+      <dd><b>Business Advisory at <span class="key">KPMG</span></b>. <span>Valuation and three-statement modeling inside the Deal Advisory practice.</span></dd>
       <dt>2024&ndash;25</dt>
-      <dd><b>One of two interns selected for the rotational program at Kinetic</b>, the WPP/GroupM out-of-home agency. <span>Client servicing, planning, execution, finance and IT.</span></dd>
+      <dd><b>One of two interns selected for the rotational program at <span class="key">Kinetic</span></b>, the WPP/GroupM out-of-home agency. <span>Client servicing, planning, execution, finance and IT.</span></dd>
       <dt>Now</dt>
       <dd><b>An OOH campaign analytics pipeline</b>. <span>The reporting tool I wanted while inside the agency. <a href="analyzer/index.html">Live dashboard</a>.</span></dd>
       <dt>Outside</dt>
@@ -133,7 +145,7 @@
       </div>
       <div class="drow">
         <dt><a href="projects.html#smog">Smog-Eating Billboard</a><span class="badge pub">Published</span></dt>
-        <dd><span class="pb"><b>The problem.</b> Lahore has 1,150+ advertising hoardings and some of the worst air on earth.</span><span class="pb"><b>What I built.</b> A feasibility model and a published article arguing the retrofit on cost grounds.</span></dd>
+        <dd><span class="pb"><b>The problem.</b> Lahore has <span class="num hi">1,150+</span> advertising hoardings and some of the worst air on earth.</span><span class="pb"><b>What I built.</b> A feasibility model and a published article arguing the retrofit on cost grounds.</span></dd>
       </div>
       <div class="drow">
         <dt><a href="projects.html#barakah">BarakahLink</a><span class="badge live">Live</span></dt>
@@ -150,8 +162,9 @@
       <p class="kicker">Daily Pakistan · October 2024</p>
       <h3>Smog-eating technology is need of the hour to combat pollution in Lahore</h3>
       <p>
-        Coating Lahore's 1,150+ ad hoardings (air quality index 207) with photocatalytic titanium
-        dioxide would remove pollutants equivalent to 292,800 trees over six hours — and the case
+        Coating Lahore's <span class="num">1,150+</span> ad hoardings (air quality index
+        <span class="num">207</span>) with photocatalytic titanium
+        dioxide would remove pollutants equivalent to <span class="num hi">292,800</span> trees over six hours — and the case
         for advertisers is commercial before environmental, since smog already forces a costlier
         cleaning cycle.
       </p>
@@ -178,6 +191,10 @@
   </footer>
 
 </main>
+<!-- The analyzer payload, for the figures marked data-ooh. Loaded after the
+     page so a slow or blocked fetch never delays render; the hardcoded values
+     stand in until it arrives. -->
+<script src="analyzer/data.js"></script>
 <script src="assets/site.js"></script>
 </body>
 </html>

@@ -63,12 +63,12 @@
         every placement against its contracted impressions prorated to the days elapsed.
       </p>
       <ul>
-        <li>Tracks <b>CAD 5.41m</b> of spend billed to date across <b>595 placements</b> and <b>27,414</b> daily delivery records, on a book where <b>three of eight campaigns are still running</b></li>
-        <li>Flags <b>61 placements (10.3%)</b> behind contract for the days that have run, and prices the shortfall at <b>CAD 152,435</b></li>
-        <li>The proration is the whole point: measured against the full booked flight instead, <b>181 healthy placements would flag as failures</b> purely for days that have not happened yet</li>
-        <li>Python and SQL do the analysis; the dashboard only renders what the tests already cover</li>
+        <li>Tracks <b class="num hi" data-ooh="spend_cad">CAD 5.41m</b> of spend billed to date across <b class="num hi" data-ooh="placements">595</b> <b>placements</b> and <b class="num" data-ooh="delivery_rows">27,414</b> daily delivery records, on a book where <b>three of eight campaigns are still running</b></li>
+        <li>Flags <b class="num hi" data-ooh="under_count">61</b> <b>placements</b> (<b class="num" data-ooh="under_pct">10.3%</b>) behind contract for the days that have run, and prices the shortfall at <b class="num hi" data-ooh="value_at_risk">CAD 152,435</b></li>
+        <li>The proration is the whole point: measured against the full booked flight instead, <b><span class="num">181</span> healthy placements would flag as failures</b> purely for days that have not happened yet</li>
+        <li><span class="key">Python</span> and <span class="key">SQL</span> do the analysis; the dashboard only renders what the tests already cover</li>
       </ul>
-      <div class="stack"><span>Python</span><span>pandas</span><span>SQL</span><span>SQLite</span><span>Chart.js</span><span>pytest</span></div>
+      <div class="stack"><span class="t-lang">Python</span><span class="t-data">pandas</span><span class="t-lang">SQL</span><span class="t-data">SQLite</span><span class="t-viz">Chart.js</span><span class="t-data">pytest</span></div>
       <div class="links">
         <a class="btn primary" href="analyzer/index.html">Open live ↗</a>
         <a class="btn" href="https://github.com/muhammadahsan-30/ooh-campaign-analyzer" target="_blank" rel="noopener">Source ↗</a>
@@ -90,16 +90,16 @@
         <figcaption>Concept mockup. The coating is invisible, so the billboard sells as normal while the surface works</figcaption>
       </figure>
       <p class="sub">
-        Lahore has 1,150+ advertising hoardings in direct sun and an air quality index of 207 (January
-        2024). I modeled whether coating that surface with photocatalytic titanium dioxide would move
+        Lahore has <span class="num">1,150+</span> advertising hoardings in direct sun and an air quality index of <span class="num">207</span> (January
+        <span class="num">2024</span>). I modeled whether coating that surface with photocatalytic titanium dioxide would move
         air quality enough to justify the cost.
       </p>
       <ul>
-        <li>Modeled the effect of retrofitting Lahore's <b>1,150+ hoardings</b> with photocatalytic coatings, estimating pollutant removal equivalent to <b>292,800 trees over six hours</b></li>
+        <li>Modeled the effect of retrofitting Lahore's <b><span class="num hi">1,150+</span> hoardings</b> with photocatalytic coatings, estimating pollutant removal equivalent to <b><span class="num hi">292,800</span> trees over six hours</b></li>
         <li>Identified the supply constraint: titanium dioxide is not produced in Pakistan</li>
-        <li>Built the case on <b>cost-benefit grounds</b>, which is the version that persuades a media owner: smog discolours conventional billboard skins faster, so the cleaning and replacement cycle already costs advertisers more than the retrofit would</li>
+        <li>Built the case on <b class="key">cost-benefit grounds</b>, which is the version that persuades a media owner: smog discolours conventional billboard skins faster, so the cleaning and replacement cycle already costs advertisers more than the retrofit would</li>
       </ul>
-      <div class="stack"><span>Research</span><span>Cost-Benefit Analysis</span><span>Technical Writing</span></div>
+      <div class="stack"><span class="t-viz">Research</span><span class="t-viz">Cost-Benefit Analysis</span><span class="t-viz">Technical Writing</span></div>
       <div class="links">
         <a class="btn" href="https://en.dailypakistan.com.pk/16-Oct-2024/smog-eating-technology-is-need-of-the-hour-to-combat-pollution-in-lahore" target="_blank" rel="noopener">Read in Daily Pakistan ↗</a>
       </div>
@@ -127,11 +127,11 @@
         them have neither.
       </p>
       <ul>
-        <li><b>Unstructured input handling.</b> Google Gemini turns messy, free-text donation offers into organized listings and need summaries written to preserve the dignity of the person asking</li>
-        <li><b>SMS-style access</b> through a simulated gateway, so the platform works without an app or reliable data</li>
-        <li><b>Hyper-local mapping</b> so donations surface to people close enough to actually collect them, rather than to whoever happens to be browsing</li>
+        <li><b>Unstructured input handling.</b> <span class="key">Google Gemini</span> turns messy, free-text donation offers into organized listings and need summaries written to preserve the dignity of the person asking</li>
+        <li><b class="key">SMS-style access</b> through a simulated gateway, so the platform works without an app or reliable data</li>
+        <li><b class="key">Hyper-local mapping</b> so donations surface to people close enough to actually collect them, rather than to whoever happens to be browsing</li>
       </ul>
-      <div class="stack"><span>Python</span><span>Google Gemini API</span><span>TypeScript</span><span>Leaflet</span></div>
+      <div class="stack"><span class="t-lang">Python</span><span class="t-data">Google Gemini API</span><span class="t-lang">TypeScript</span><span class="t-viz">Leaflet</span></div>
       <div class="links">
         <a class="btn primary" href="https://barakahlink.vercel.app" target="_blank" rel="noopener">Open live ↗</a>
         <a class="btn" href="https://github.com/muhammadahsan-30/BarakahLink" target="_blank" rel="noopener">Source ↗</a>
@@ -159,6 +159,10 @@
   </footer>
 
 </main>
+<!-- The analyzer payload, for the figures marked data-ooh. Loaded after the
+     page so a slow or blocked fetch never delays render; the hardcoded values
+     stand in until it arrives. -->
+<script src="analyzer/data.js"></script>
 <script src="assets/site.js"></script>
 </body>
 </html>

@@ -15,6 +15,13 @@
   --accent-soft:#f0e2db;
   --accent-2:#2f5d62;      /* deep teal */
   --accent-2-soft:#dfeaea;
+  /* Dot-grid colour, derived from --rule so it can never drift from the
+     hairlines. 1.42:1 against --paper: visible as texture, never as pattern. */
+  --dot:color-mix(in srgb,var(--rule) 88%,var(--muted));
+  /* Text that sits ON a filled --accent surface. Not a new colour: white in
+     light mode, where --accent is dark sienna (7.43:1). In dark mode --accent
+     becomes a light salmon and white drops to 2.70:1, so it flips to --paper. */
+  --accent-ink:#fff;
   --shadow:0 1px 2px rgba(23,21,15,.04), 0 8px 24px -12px rgba(23,21,15,.10);
   --shadow-lift:0 2px 4px rgba(23,21,15,.05), 0 18px 40px -18px rgba(23,21,15,.20);
   --serif:'Newsreader',Georgia,'Times New Roman',serif;
@@ -27,6 +34,11 @@
     --ink:#ece7de; --muted:#a49c91; --faint:#8a8279; --rule:#2b2822;
     --accent:#d98a68; --accent-soft:#33241d;
     --accent-2:#78b4b7; --accent-2-soft:#1d2a2b;
+    /* Slightly more present in dark, where a near-black ground swallows the
+       light-mode value entirely. 1.96:1 against --paper. */
+    --dot:color-mix(in srgb,var(--rule) 85%,var(--ink));
+    /* 6.94:1 on the dark --accent, against 2.70:1 for white. */
+    --accent-ink:var(--paper);
     --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.6);
     --shadow-lift:0 2px 4px rgba(0,0,0,.35), 0 18px 40px -18px rgba(0,0,0,.8);
   }
@@ -37,7 +49,13 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 body{
-  margin:0; background:var(--paper); color:var(--ink);
+  margin:0; color:var(--ink);
+  /* Dot grid on the page ground so panels and cards sit ON something rather
+     than floating on flat colour. 22px pitch, 1px dot. */
+  background-color:var(--paper);
+  background-image:radial-gradient(var(--dot) 1px,transparent 1px);
+  background-size:22px 22px;
+  background-position:-1px -1px;
   font-family:var(--sans); font-size:16.5px; line-height:1.68;
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
   position:relative; overflow-x:hidden;
@@ -50,11 +68,47 @@ body::before{
 main,.topbar,footer{position:relative; z-index:2}
 
 a{color:inherit}
-::selection{background:var(--accent); color:var(--paper)}
+::selection{background:var(--accent); color:var(--accent-ink)}
 :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:3px}
 
 .wrap{max-width:760px; margin:0 auto; padding:0 26px}
 .wrap-wide{max-width:760px; margin:0 auto; padding:0 26px}
+
+/* ---------------- figures and key terms ----------------
+   Every number on the site renders in --mono with tabular figures. This is the
+   register the analyzer dashboard uses, and it is what makes a page of prose
+   read as measured rather than asserted. .93em because mono sits optically
+   larger than Inter at the same px. */
+.num{font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:.93em; letter-spacing:-.005em}
+/* .hi marks the figure that is the point of its sentence. Two or three per
+   paragraph at most, or the emphasis stops meaning anything. */
+.num.hi{color:var(--accent); font-weight:500}
+/* Colour instead of bold for the term that carries the sentence. Applied to
+   the existing <b>, so semantics survive and the weight drops to medium. */
+.key{color:var(--accent); font-weight:500}
+
+/* ---------------- stats band ---------------- */
+.statband{
+  margin:32px 0 0; display:grid; grid-template-columns:repeat(4,1fr);
+  background:var(--card); border:1px solid var(--rule); border-radius:10px;
+  box-shadow:var(--shadow); overflow:hidden;
+}
+.stat{padding:18px 18px 16px; border-left:1px solid var(--rule); min-width:0}
+.stat:first-child{border-left:none}
+.stat .fig{
+  display:block; font-family:var(--mono); font-variant-numeric:tabular-nums;
+  font-size:clamp(22px,3.4vw,26px); font-weight:500; color:var(--accent);
+  letter-spacing:-.03em; line-height:1.08;
+}
+.stat .lab{
+  display:block; margin-top:8px; font-family:var(--mono); font-size:9.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--faint); line-height:1.45;
+}
+@media (max-width:720px){
+  .statband{grid-template-columns:1fr 1fr}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .stat:nth-child(odd){border-left:none}
+}
 
 /* ---------------- top bar ---------------- */
 .topbar{
@@ -83,15 +137,25 @@ a{color:inherit}
 .topnav a.on{color:var(--ink); font-weight:500}
 .topnav a.on::after{transform:scaleX(1)}
 .topnav a.cta{
-  background:var(--accent); color:#fff; font-weight:500; margin-left:6px;
+  background:var(--accent); color:var(--accent-ink); font-weight:500; margin-left:6px;
 }
 .topnav a.cta::after{display:none}
-.topnav a.cta:hover{opacity:.88; color:#fff}
+.topnav a.cta:hover{opacity:.88; color:var(--accent-ink)}
 @media (max-width:640px){
   .topbar .wrap-wide{height:56px}
   .mark{font-size:.98rem}
   .topnav a{padding:6px 8px; font-size:.8rem}
   .topnav a.cta{padding:6px 12px}
+}
+/* Below ~430px the wordmark and four nav items cannot both fit, and what fell
+   off the right edge was the Contact button — the one thing on the bar with a
+   job to do. The wordmark goes instead: "About" is the same destination, so
+   nothing becomes unreachable. */
+@media (max-width:430px){
+  .mark{display:none}
+  .topbar .wrap-wide{justify-content:flex-end; padding:0 16px}
+  .topnav a{padding:6px 7px; font-size:.78rem}
+  .topnav a.cta{padding:6px 11px; margin-left:3px}
 }
 
 /* ---------------- page head ---------------- */
@@ -126,8 +190,8 @@ p.body strong{color:var(--ink); font-weight:500}
   display:inline-flex; align-items:center; gap:7px;
 }
 .btn:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-2px); box-shadow:var(--shadow)}
-.btn.primary{background:var(--accent); border-color:var(--accent); color:#fff}
-.btn.primary:hover{color:#fff; opacity:.9}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.btn.primary:hover{color:var(--accent-ink); opacity:.9}
 .btn svg{width:13px; height:13px; opacity:.65}
 
 /* ---------------- section heads ---------------- */
@@ -136,6 +200,15 @@ section{padding:60px 0 0}
 .snum{font-family:var(--mono); font-size:.74rem; color:var(--accent); flex:none; letter-spacing:.08em; padding-top:4px}
 h2{font-family:var(--serif); font-weight:400; font-size:1.6rem; letter-spacing:-.014em; margin:0; flex:none}
 .shead .rule{flex:1; height:1px; background:linear-gradient(90deg,var(--rule),transparent); transform:translateY(-3px)}
+/* h2 is flex:none so the trailing rule fills the row. On a narrow screen that
+   makes a long heading ("OOH Campaign Performance Analyzer") push past the
+   viewport instead of wrapping, so below 620px it is allowed to shrink and the
+   rule steps aside. */
+@media (max-width:620px){
+  .shead{gap:11px}
+  .shead h2{flex:1 1 auto; min-width:0}
+  .shead .rule{display:none}
+}
 
 /* ---------------- portrait ---------------- */
 .portrait-wrap{position:relative; flex:none; width:158px}
@@ -151,7 +224,7 @@ h2{font-family:var(--serif); font-weight:400; font-size:1.6rem; letter-spacing:-
 .portrait-ph{
   width:158px; height:190px; border-radius:5px; border:1px dashed var(--rule);
   display:flex; align-items:center; justify-content:center; text-align:center;
-  color:var(--faint); font-size:.72rem; padding:14px; background:var(--paper-2); line-height:1.5;
+  color:var(--muted); font-size:.72rem; padding:14px; background:var(--paper-2); line-height:1.5;
 }
 .hero-flex{display:flex; gap:38px; align-items:flex-start}
 @media (max-width:640px){
@@ -162,10 +235,14 @@ h2{font-family:var(--serif); font-weight:400; font-size:1.6rem; letter-spacing:-
 
 /* ---------------- status list ---------------- */
 .status{margin:52px 0 0; border-top:1px solid var(--rule)}
-.status dl{margin:0; display:grid; grid-template-columns:92px 1fr}
+.status dl{margin:0; display:grid; grid-template-columns:112px 1fr}
+/* Fixed-width label column in the small-caps register: mono, 10px, tracked
+   out, --faint. Quiet enough that the row reads as content-with-a-label
+   rather than a two-column table. 4.60:1 on --paper. */
 .status dt{
-  font-family:var(--mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--accent); padding:16px 0; border-bottom:1px solid var(--rule); font-weight:500;
+  font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--faint); padding:19px 14px 19px 0; border-bottom:1px solid var(--rule);
+  font-weight:500; line-height:1.5;
 }
 .status dd{margin:0; padding:16px 0; border-bottom:1px solid var(--rule); font-size:.95rem}
 .status dd span{color:var(--muted)}
@@ -183,7 +260,7 @@ h2{font-family:var(--serif); font-weight:400; font-size:1.6rem; letter-spacing:-
   position:relative; overflow:hidden;
 }
 .card::before{
-  content:''; position:absolute; left:0; top:0; bottom:0; width:2.5px;
+  content:''; position:absolute; left:0; top:0; bottom:0; width:2.5px; z-index:2;
   background:linear-gradient(180deg,var(--accent),var(--accent-2));
   transform:scaleY(0); transform-origin:top; transition:transform .34s cubic-bezier(.4,0,.2,1);
 }
@@ -191,7 +268,14 @@ h2{font-family:var(--serif); font-weight:400; font-size:1.6rem; letter-spacing:-
 .card:hover::before{transform:scaleY(1)}
 .card + .card{margin-top:16px}
 
-.card-top{display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap}
+/* Header strip. Bleeds to the card edge with negative margins so the card
+   reads as a framed panel with a label, not a block of text in whitespace.
+   The mono label on the right is the existing .meta. */
+.card-top{
+  display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap;
+  margin:-24px -26px 19px; padding:13px 26px;
+  background:var(--paper-2); border-bottom:1px solid var(--rule);
+}
 .card h3{font-family:var(--serif); font-weight:400; font-size:1.3rem; margin:0; letter-spacing:-.012em}
 .card h3 a{
   text-decoration:none;
@@ -200,7 +284,12 @@ h2{font-family:var(--serif); font-weight:400; font-size:1.6rem; letter-spacing:-
   transition:background-size .3s ease,color .18s;
 }
 .card h3 a:hover{background-size:100% 1.5px; color:var(--accent)}
-.meta{font-family:var(--mono); font-size:.73rem; color:var(--faint); white-space:nowrap; letter-spacing:.04em}
+/* --muted, not --faint: .meta moved onto the --paper-2 header strip, where
+   --faint is 4.25:1 in light mode and fails AA. */
+.meta{
+  font-family:var(--mono); font-size:.68rem; color:var(--muted); white-space:nowrap;
+  letter-spacing:.11em; text-transform:uppercase; font-variant-numeric:tabular-nums;
+}
 .card .sub{color:var(--muted); font-size:.96rem; margin:11px 0 14px; max-width:62ch}
 .card ul{margin:0; padding-left:0; list-style:none}
 .card li{font-size:.925rem; margin-bottom:8px; padding-left:19px; position:relative; color:var(--ink)}
@@ -216,37 +305,73 @@ h2{font-family:var(--serif); font-weight:400; font-size:1.6rem; letter-spacing:-
 .badge.live{color:var(--accent-2); border-color:var(--accent-2); background:var(--accent-2-soft)}
 .badge.pub{color:var(--accent-2); border-color:var(--accent-2); background:var(--accent-2-soft)}
 
-/* stack tags */
-.stack{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px}
+/* ---------------- categorised pill tags ----------------
+   Outlined, not filled, and colour-coded so a stack row is scannable by kind
+   rather than being one undifferentiated grey block:
+     .t-lang  --accent    languages
+     .t-data  --accent-2  data stores, libraries, platforms
+     .t-viz   --faint     visualisation, and the neutral default
+   Borders are the category colour at partial alpha; text is the full value, so
+   every pill clears AA on --card and on --paper (4.84:1 worst case). */
+.stack{display:flex; flex-wrap:wrap; gap:6px; margin-top:18px}
 .stack span{
-  font-family:var(--mono); font-size:.7rem; color:var(--muted); background:var(--paper-2);
-  border:1px solid var(--rule); border-radius:5px; padding:3px 9px; letter-spacing:.02em;
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.02em; white-space:nowrap;
+  border:1px solid; border-radius:4px; padding:3px 9px; background:transparent;
+  color:var(--faint); border-color:color-mix(in srgb,var(--faint) 38%,transparent);
 }
+.stack span.t-lang{color:var(--accent); border-color:color-mix(in srgb,var(--accent) 42%,transparent)}
+.stack span.t-data{color:var(--accent-2); border-color:color-mix(in srgb,var(--accent-2) 42%,transparent)}
+.stack span.t-viz{color:var(--faint); border-color:color-mix(in srgb,var(--faint) 38%,transparent)}
 
 /* ---------------- principles grid ---------------- */
 .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
 @media (max-width:700px){.grid-3{grid-template-columns:1fr}}
 .tile{
-  background:var(--card); border:1px solid var(--rule); border-radius:11px; padding:22px;
-  transition:all .28s cubic-bezier(.4,0,.2,1);
+  background:var(--card); border:1px solid var(--rule); border-radius:11px; padding:0;
+  transition:all .28s cubic-bezier(.4,0,.2,1); overflow:hidden;
 }
 .tile:hover{transform:translateY(-3px); box-shadow:var(--shadow-lift); border-color:color-mix(in srgb,var(--accent) 28%,var(--rule))}
-.tile .n{font-family:var(--mono); font-size:.7rem; color:var(--accent); letter-spacing:.1em; display:block; margin-bottom:11px}
-.tile h4{font-family:var(--serif); font-weight:400; font-size:1.09rem; margin:0 0 8px; letter-spacing:-.008em}
-.tile p{margin:0; font-size:.895rem; color:var(--muted); line-height:1.6}
+/* Same header-strip treatment as .card: the numeral becomes a label, not a
+   floating superscript. No text-transform — the roman numerals are written
+   lowercase on purpose. */
+.tile .n{
+  display:block; margin:0; padding:10px 20px;
+  background:var(--paper-2); border-bottom:1px solid var(--rule);
+  font-family:var(--mono); font-size:.7rem; color:var(--accent); letter-spacing:.13em;
+}
+.tile h4{font-family:var(--serif); font-weight:400; font-size:1.09rem; margin:18px 20px 8px; letter-spacing:-.008em}
+.tile p{margin:0 20px 20px; font-size:.895rem; color:var(--muted); line-height:1.6}
 
-/* ---------------- experience rows ---------------- */
-.job{padding:26px 0; border-top:1px solid var(--rule)}
-.job:last-of-type{border-bottom:1px solid var(--rule)}
-.job-top{display:grid; grid-template-columns:1fr auto; gap:6px 18px; align-items:baseline}
+/* ---------------- experience panels ----------------
+   Framed rather than divided by hairlines. These blocks carry the densest
+   figures on the site and were the hardest thing to scan as open rows. */
+.job{
+  padding:0; background:var(--card); border:1px solid var(--rule); border-radius:11px;
+  box-shadow:var(--shadow); margin-bottom:16px; overflow:hidden;
+}
+.job-top{
+  display:grid; grid-template-columns:1fr auto; gap:6px 18px; align-items:baseline;
+  padding:14px 24px; background:var(--paper-2); border-bottom:1px solid var(--rule);
+}
 .job h3{font-family:var(--serif); font-weight:400; font-size:1.24rem; margin:0; letter-spacing:-.01em}
 .job .role{color:var(--accent); font-size:.88rem; margin:3px 0 0; font-weight:500}
-.job .when{font-family:var(--mono); font-size:.72rem; color:var(--faint); white-space:nowrap; text-align:right; letter-spacing:.04em}
-.job .detail{font-size:.945rem; color:var(--muted); margin:14px 0 0; max-width:64ch}
-.job ul{margin:14px 0 0; padding-left:0; list-style:none}
+.job .when{
+  font-family:var(--mono); font-size:.68rem; color:var(--muted); white-space:nowrap;
+  text-align:right; letter-spacing:.11em; text-transform:uppercase;
+  font-variant-numeric:tabular-nums;
+}
+.job .detail{font-size:.945rem; color:var(--muted); margin:18px 24px 0; max-width:64ch}
+.job ul{margin:17px 24px 0; padding-left:0; list-style:none}
 .job li{font-size:.925rem; margin-bottom:8px; padding-left:19px; position:relative}
 .job li::before{content:''; position:absolute; left:1px; top:.72em; width:9px; height:1px; background:var(--accent); opacity:.65}
-@media (max-width:540px){.job-top{grid-template-columns:1fr}.job .when{text-align:left}}
+.job .stack{margin:18px 24px 0}
+.job .facts{margin:20px 24px 0}
+.job > :last-child{margin-bottom:22px}
+@media (max-width:540px){
+  .job-top{grid-template-columns:1fr; padding:13px 18px}
+  .job .when{text-align:left}
+  .job .detail,.job ul,.job .stack,.job .facts{margin-left:18px; margin-right:18px}
+}
 
 /* ---------------- definition rows ---------------- */
 .drows{border-top:1px solid var(--rule); margin:0}
@@ -265,6 +390,20 @@ h2{font-family:var(--serif); font-weight:400; font-size:1.6rem; letter-spacing:-
   .drow dt{padding:15px 0 1px}
   .drow dd{padding:0 0 15px}
 }
+/* .lbl — the same small-caps label column as .status, for rows where the dt is
+   genuinely a label rather than a title. Not applied to the Selected work rows
+   on the home page: those dt are project names carrying links and badges. */
+.drows.lbl .drow{grid-template-columns:186px 1fr}
+.drows.lbl dt{
+  font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--faint); font-weight:500; line-height:1.5; padding:17px 16px 17px 0;
+}
+.drows.lbl dd{padding:16px 0}
+@media (max-width:540px){
+  .drows.lbl .drow{grid-template-columns:1fr}
+  .drows.lbl dt{padding:15px 0 3px}
+  .drows.lbl dd{padding:0 0 15px}
+}
 
 /* ---------------- callout ---------------- */
 .callout{
@@ -272,7 +411,8 @@ h2{font-family:var(--serif); font-weight:400; font-size:1.6rem; letter-spacing:-
   padding:18px 22px; border-radius:0 9px 9px 0; margin:26px 0;
 }
 .callout p{margin:0; font-family:var(--serif); font-size:1.06rem; font-weight:300; line-height:1.55; color:var(--ink)}
-.callout cite{display:block; margin-top:9px; font-style:normal; font-size:.78rem; color:var(--faint); font-family:var(--sans)}
+/* --muted for the same reason as .facts dt: --paper-2 ground. */
+.callout cite{display:block; margin-top:9px; font-style:normal; font-size:.78rem; color:var(--muted); font-family:var(--sans)}
 
 /* ---------------- closing ---------------- */
 .closing{padding:66px 0 26px}
@@ -315,7 +455,12 @@ figure.shot img{transition:none}
 .facts dl{margin:0; display:grid; grid-template-columns:repeat(2,1fr)}
 .facts .f{padding:13px 18px; border-bottom:1px solid var(--rule)}
 .facts .f:nth-child(odd){border-right:1px solid var(--rule)}
-.facts dt{font-size:.72rem; color:var(--faint); letter-spacing:.03em; margin-bottom:3px}
+/* --muted, not --faint: these cells sit on --paper-2, where --faint is only
+   4.25:1 in light mode and fails AA. --muted is 4.84:1 on the same ground. */
+.facts dt{
+  font-family:var(--mono); font-size:.63rem; color:var(--muted); letter-spacing:.1em;
+  text-transform:uppercase; margin-bottom:6px; line-height:1.45;
+}
 .facts dd{margin:0; font-family:var(--serif); font-size:1.06rem; color:var(--ink); line-height:1.3}
 .facts dd small{font-family:var(--sans); font-size:.76rem; color:var(--muted); display:block; margin-top:3px; line-height:1.45}
 .facts .note{
@@ -331,17 +476,19 @@ figure.shot img{transition:none}
 .press{
   display:block; text-decoration:none; background:var(--card);
   border:1px solid var(--rule); border-left:2.5px solid var(--accent-2);
-  border-radius:0 11px 11px 0; padding:22px 26px; margin-top:4px;
+  border-radius:0 11px 11px 0; padding:0; margin-top:4px; overflow:hidden;
   transition:all .28s cubic-bezier(.4,0,.2,1);
 }
 .press:hover{transform:translateY(-3px); box-shadow:var(--shadow-lift); border-color:var(--accent-2)}
+/* Publication and date become the container's label strip. */
 .press .kicker{
   font-family:var(--mono); font-size:.68rem; letter-spacing:.13em; text-transform:uppercase;
-  color:var(--accent-2); margin:0 0 10px; font-weight:500;
+  color:var(--accent-2); margin:0; font-weight:500;
+  padding:12px 26px; background:var(--paper-2); border-bottom:1px solid var(--rule);
 }
-.press h3{font-family:var(--serif); font-weight:400; font-size:1.24rem; margin:0 0 9px; letter-spacing:-.012em; color:var(--ink)}
-.press p{margin:0; font-size:.94rem; color:var(--muted); max-width:60ch}
-.press .go{display:inline-block; margin-top:13px; font-size:.85rem; color:var(--accent-2); font-weight:500}
+.press h3{font-family:var(--serif); font-weight:400; font-size:1.24rem; margin:19px 26px 9px; letter-spacing:-.012em; color:var(--ink)}
+.press p{margin:0 26px; font-size:.94rem; color:var(--muted); max-width:60ch}
+.press .go{display:inline-block; margin:14px 26px 22px; font-size:.85rem; color:var(--accent-2); font-weight:500}
 
 /* ---------------- 404 ---------------- */
 .nf{padding:110px 0 90px; text-align:left}
@@ -357,7 +504,12 @@ figure.shot img{transition:none}
   display:block; position:relative; margin:18px 0 4px; border:1px solid var(--rule);
   border-radius:8px; overflow:hidden; background:#0d1117; text-decoration:none;
 }
-.preview .frame{position:relative; width:100%; height:340px; overflow:hidden}
+/* display:block is load-bearing, not decoration. .frame is a <span>, and width
+   and height do not apply to an inline box — the iframe and veil inside are
+   both absolutely positioned, so the span had no in-flow content and collapsed
+   to one line-height (30px), showing a sliver of the dashboard instead of the
+   preview. Same reason .cap needs it to sit as a full-width caption bar. */
+.preview .frame{display:block; position:relative; width:100%; height:340px; overflow:hidden}
 .preview iframe{
   position:absolute; top:0; left:0; width:1440px; height:1020px;
   border:0; transform:scale(.47); transform-origin:top left; pointer-events:none;
@@ -372,6 +524,7 @@ figure.shot img{transition:none}
 }
 .preview:hover .open{opacity:1; transform:none}
 .preview figcaption, .preview .cap{
+  display:block;
   font-family:var(--mono); font-size:.68rem; color:var(--faint); letter-spacing:.06em;
   padding:9px 13px; border-top:1px solid var(--rule); background:var(--card); line-height:1.5;
 }
