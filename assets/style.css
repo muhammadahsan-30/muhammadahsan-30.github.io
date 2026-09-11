@@ -168,6 +168,15 @@ a{color:inherit}
   display:flex; align-items:center; gap:10px;
 }
 .eyebrow::after{content:''; height:1px; flex:1; background:linear-gradient(90deg,var(--rule),transparent); max-width:120px}
+/* Availability reuses .badge rather than inventing a treatment. It sits in the
+   eyebrow because it is the first thing a co-op recruiter looks for, and the
+   eyebrow is the first line on the page. --accent on --accent-soft is 5.88:1
+   light, 5.52:1 dark. */
+.eyebrow .avail{margin-left:0; vertical-align:baseline; flex:none}
+@media (max-width:430px){
+  .eyebrow{flex-wrap:wrap; gap:8px}
+  .eyebrow::after{display:none}
+}
 
 h1{
   font-family:var(--serif); font-weight:400;

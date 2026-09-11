@@ -20,7 +20,7 @@
     var s = payload.summary;
     var n = function (v) { return Math.round(v).toLocaleString('en-CA'); };
     var figures = {
-      spend_m:       '$' + (s.spend / 1e6).toFixed(1) + 'M',
+      spend_m:       'CAD ' + (s.spend / 1e6).toFixed(1) + 'M',
       spend_cad:     'CAD ' + (s.spend / 1e6).toFixed(2) + 'm',
       placements:    n(s.placements),
       delivery_rows: n(s.delivery_rows),
