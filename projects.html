@@ -55,20 +55,33 @@
       <a class="preview" href="analyzer/index.html">
         <span class="frame"><iframe src="analyzer/index.html" loading="lazy" title="OOH Campaign Performance Analyzer dashboard" scrolling="no" tabindex="-1"></iframe><span class="veil"></span></span>
         <span class="open">Open the dashboard →</span>
-        <span class="cap">LIVE. FILTER BY CLIENT, CITY AND FORMAT</span>
+        <span class="cap">LIVE. ATTENTION CENTRE, PACING AND CAMPAIGN DRILL-DOWN</span>
       </a>
       <p class="sub">
-        Agencies find OOH under-delivery by hand at end of campaign. I spent five months inside a
-        WPP/GroupM agency watching that happen; this finds it mid-flight instead, by measuring
-        every placement against its contracted impressions prorated to the days elapsed.
+        Measures every placement against the impressions contracted <em>by today</em>, surfaces
+        under-delivery that campaign-level reporting hides, prices it in media value, and separates
+        what can still be fixed in flight from what has to be reconciled after it. I spent five
+        months inside a WPP/GroupM agency doing that reconciliation by hand.
       </p>
       <ul>
-        <li>Tracks <b class="num hi" data-ooh="spend_cad">CAD 5.41m</b> of spend billed to date across <b class="num hi" data-ooh="placements">595</b> <b>placements</b> and <b class="num" data-ooh="delivery_rows">27,414</b> daily delivery records, on a book where <b>three of eight campaigns are still running</b></li>
-        <li>Flags <b class="num hi" data-ooh="under_count">61</b> <b>placements</b> (<b class="num" data-ooh="under_pct">10.3%</b>) behind contract for the days that have run, and prices the shortfall at <b class="num hi" data-ooh="value_at_risk">CAD 152,435</b></li>
-        <li>The proration is the whole point: measured against the full booked flight instead, <b><span class="num">181</span> healthy placements would flag as failures</b> purely for days that have not happened yet</li>
-        <li><span class="key">Python</span> and <span class="key">SQL</span> do the analysis; the dashboard only renders what the tests already cover</li>
+        <li>Surfaces under-delivery that campaign reporting hides: the book reads &minus;2.1% while
+            <b class="num hi" data-ooh="gross_short">10.5m</b> <b>impressions are short</b> across
+            <b class="num" data-ooh="behind">227</b> placements, <b class="num hi" data-ooh="masking_pct">14%</b>
+            of it masked by over-delivery elsewhere</li>
+        <li>Catches faults while the flight is still running &mdash; median
+            <b class="num hi" data-ooh="detect_days">2.5</b> <b>days</b> from a site falling away to
+            crossing the alert line, against <b class="num hi" data-ooh="recon_days">31</b> days until
+            end-of-campaign reconciliation would have found it</li>
+        <li>Tracks <b class="num hi" data-ooh="spend_cad">CAD 5.41m</b> of spend across
+            <b class="num" data-ooh="placements">595</b> placements and
+            <b class="num" data-ooh="delivery_rows">27,414</b> daily delivery records; prices the
+            shortfall at <b class="num hi" data-ooh="billed_short">CAD 117,058</b> and splits
+            <b class="num" data-ooh="live_issues">21</b> live issues from
+            <b class="num" data-ooh="completed">61</b> completed reconciliation cases</li>
+        <li><span class="key">Python</span> and <span class="key">SQL</span> do the analysis; the
+            dashboard only renders what the tests already cover</li>
       </ul>
-      <div class="stack"><span class="t-lang">Python</span><span class="t-data">pandas</span><span class="t-lang">SQL</span><span class="t-data">SQLite</span><span class="t-viz">Chart.js</span><span class="t-data">pytest</span></div>
+      <div class="stack"><span class="t-lang">Python</span><span class="t-data">pandas</span><span class="t-lang">SQL</span><span class="t-data">SQLite</span><span class="t-viz">SVG</span><span class="t-data">pytest</span></div>
       <div class="links">
         <a class="btn primary" href="analyzer/index.html">Open live ↗</a>
         <a class="btn" href="https://github.com/muhammadahsan-30/ooh-campaign-analyzer" target="_blank" rel="noopener">Source ↗</a>

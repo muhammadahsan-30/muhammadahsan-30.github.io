@@ -18,17 +18,35 @@
   var payload = window.OOH_DATA;
   if (payload && payload.summary) {
     var s = payload.summary;
+    var det = s.detection || {};
     var n = function (v) { return Math.round(v).toLocaleString('en-CA'); };
+    // Every figure is built through num()/str(), which return undefined when the
+    // payload does not carry that key. An older or newer analyzer build then
+    // leaves the hardcoded fallback in place instead of printing NaN -- or
+    // throwing, which is what an earlier version did when the analyzer renamed
+    // a summary field and took the rest of this script down with it.
+    var num = function (v, f) {
+      return (typeof v === 'number' && isFinite(v)) ? f(v) : undefined;
+    };
     var figures = {
-      spend_m:       'CAD ' + (s.spend / 1e6).toFixed(1) + 'M',
-      spend_cad:     'CAD ' + (s.spend / 1e6).toFixed(2) + 'm',
-      placements:    n(s.placements),
-      delivery_rows: n(s.delivery_rows),
-      under_count:   n(s.under_count),
-      under_pct:     s.under_pct.toFixed(1) + '%',
-      value_at_risk: 'CAD ' + n(s.value_at_risk),
-      blended_cpm:   'CAD ' + s.blended_cpm.toFixed(2),
-      as_of:         s.as_of
+      spend_m:        num(s.spend, function (v) { return 'CAD ' + (v / 1e6).toFixed(1) + 'M'; }),
+      spend_cad:      num(s.spend, function (v) { return 'CAD ' + (v / 1e6).toFixed(2) + 'm'; }),
+      placements:     num(s.placements, n),
+      delivery_rows:  num(s.delivery_rows, n),
+      live_issues:    num(s.live_issues, n),
+      completed:      num(s.completed_shortfalls, n),
+      flagged:        num((s.live_issues + s.completed_shortfalls), n),
+      flagged_pct:    num((s.live_issues + s.completed_shortfalls) / s.placements * 100,
+                          function (v) { return v.toFixed(1) + '%'; }),
+      billed_short:   num(s.billed_shortfall, function (v) { return 'CAD ' + n(v); }),
+      preventable:    num(s.preventable_exposure, function (v) { return 'CAD ' + n(v); }),
+      gross_short:    num(s.gross_shortfall, function (v) { return (v / 1e6).toFixed(1) + 'm'; }),
+      masking_pct:    num(s.masking_pct, function (v) { return Math.round(v) + '%'; }),
+      behind:         num(s.placements_behind, n),
+      detect_days:    num(det.median_detection_delay_days, function (v) { return v.toFixed(1); }),
+      recon_days:     num(det.median_reconciliation_delay_days, function (v) { return v.toFixed(0); }),
+      blended_cpm:    num(s.blended_cpm, function (v) { return 'CAD ' + v.toFixed(2); }),
+      as_of:          typeof s.as_of === 'string' ? s.as_of : undefined
     };
     document.querySelectorAll('[data-ooh]').forEach(function (el) {
       var v = figures[el.getAttribute('data-ooh')];
