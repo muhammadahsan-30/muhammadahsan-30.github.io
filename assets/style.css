@@ -456,6 +456,7 @@ footer nav{display:flex; gap:16px; flex-wrap:wrap}
 .shot{
   margin:18px 0 4px; border:1px solid var(--rule); border-radius:8px; overflow:hidden;
   background:var(--paper-2); position:relative; display:block; line-height:0;
+  text-decoration:none;
 }
 figure.shot{margin-left:0; margin-right:0}
 figure.shot img{transition:none}
@@ -509,6 +510,9 @@ figure.shot img{transition:none}
   font-family:var(--mono); font-size:.68rem; letter-spacing:.13em; text-transform:uppercase;
   color:var(--accent-2); margin:0; font-weight:500;
   padding:12px 26px; background:var(--paper-2); border-bottom:1px solid var(--rule);
+  /* .press p below sets a 60ch measure for body copy. The label strip is not
+     body copy and must span the full card, so it opts out. */
+  max-width:none;
 }
 .press h3{font-family:var(--serif); font-weight:400; font-size:1.24rem; margin:19px 26px 9px; letter-spacing:-.012em; color:var(--ink)}
 .press p{margin:0 26px; font-size:.94rem; color:var(--muted); max-width:60ch}
@@ -732,10 +736,50 @@ a[target="_blank"]:not(.btn):not(.shot):not(.preview):hover{color:var(--accent-2
 .posline{
   font-family:var(--serif); font-weight:400; font-size:clamp(1.42rem,3.1vw,1.95rem);
   line-height:1.22; letter-spacing:-.018em; color:var(--ink);
-  margin:20px 0 0; max-width:27ch;
+  margin:20px 0 0; max-width:41ch;
 }
 .posline em{font-style:italic; color:var(--accent)}
 .statnote{
   font-family:var(--mono); font-size:.65rem; letter-spacing:.07em; color:var(--faint);
   margin:9px 0 0;
 }
+
+/* ---------------- credibility row ----------------
+   A variant of .statband where two tiles carry an employer rather than a
+   figure. A number without an employer beside it is a trivia question; "CAD
+   19.5M" means something once "KPMG, Deal Advisory" sits next to it. */
+.stat.who .fig{
+  font-family:var(--serif); font-size:clamp(19px,2.8vw,22px); font-weight:400;
+  color:var(--ink); letter-spacing:-.015em;
+}
+.stat.who .lab{color:var(--muted)}
+
+/* ---------------- project entry ----------------
+   One system, three scales. The entry is not a card: it is a block of page, so
+   the largest one reads as the most important without being labelled. */
+.entry{margin-top:4px}
+.entry .lede-q{
+  font-family:var(--serif); font-size:clamp(1.06rem,2.2vw,1.22rem); line-height:1.5;
+  color:var(--ink); margin:0 0 18px; max-width:56ch; letter-spacing:-.008em;
+}
+.entry .lede-q b{font-weight:500}
+.entry .proof{
+  font-family:var(--mono); font-size:.7rem; letter-spacing:.07em; color:var(--faint);
+  margin:14px 0 0; line-height:1.9;
+}
+.entry .proof b{color:var(--accent); font-weight:500}
+.entry .links{margin-top:18px}
+
+/* The published piece uses the publication itself as its artifact. */
+.press.artifact{margin:0 0 4px}
+.press.artifact:hover{transform:none; box-shadow:var(--shadow)}
+
+/* ---------------- where I've worked ---------------- */
+.wrow{
+  display:grid; grid-template-columns:1fr auto; gap:6px 18px; align-items:baseline;
+  padding:15px 0; border-top:1px solid var(--rule);
+}
+.wrow:last-of-type{border-bottom:1px solid var(--rule)}
+.wrow .wc{font-family:var(--serif); font-size:1.04rem; letter-spacing:-.01em}
+.wrow .ww{font-family:var(--mono); font-size:.68rem; letter-spacing:.08em; color:var(--faint); white-space:nowrap}
+.wrow .wd{grid-column:1/-1; font-size:.9rem; color:var(--muted); margin:0; line-height:1.6}

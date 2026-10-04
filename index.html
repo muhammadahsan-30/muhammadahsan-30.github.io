@@ -90,7 +90,7 @@
     <div class="hero-flex">
       <div>
         <h1>Muhammad<br>Ahsan Sheikh</h1>
-        <p class="posline">I learn how a business works,<br>then build <em>what it's missing</em>.</p>
+        <p class="posline">I learn how the work actually gets done,<br>then build <em>what's missing</em>.</p>
         <p class="body" style="margin-top:18px">
           <strong>Honours Mathematics and Business Administration</strong> at the University of
           Waterloo. Valuation models at KPMG, media campaigns at a WPP/GroupM agency, and the
@@ -102,170 +102,157 @@
       </div>
     </div>
 
-    <!-- Three figures, all from paid work. The analyzer's CAD 5.4m used to sit
-         here in identical styling, which presented a synthetic project figure as
-         a real-world result; it now lives in the flagship block where its
-         context travels with it.
+    <!-- Two employers and two figures, together. A number on its own is a
+         trivia question; CAD 19.5M means something once KPMG sits beside it.
          CAD 19.5M is the capital ONE partner had deployed into the venture I
          contributed to valuing - not the venture's valuation, and not a deal I
-         led. -->
+         led. Nothing synthetic appears in this row. -->
     <div class="statband">
+      <div class="stat who"><span class="fig">KPMG</span><span class="lab">Deal Advisory · 2026</span></div>
+      <div class="stat who"><span class="fig">Kinetic</span><span class="lab">WPP/GroupM · 1 of 2 interns</span></div>
       <div class="stat"><span class="fig">CAD 19.5M</span><span class="lab">Capital in venture valued</span></div>
       <div class="stat"><span class="fig">CAD 1M+</span><span class="lab">Media spend reconciled</span></div>
-      <div class="stat"><span class="fig">1 of 2</span><span class="lab">Interns selected</span></div>
     </div>
     <p class="statnote">From paid work. Project figures appear with the project.</p>
 
     <div class="links">
       <a class="btn primary" href="resume.pdf">Resume</a>
-      <a class="btn" href="projects.html">Projects</a>
       <a class="btn" href="mailto:m39sheik@uwaterloo.ca">Email</a>
       <a class="btn" href="https://www.linkedin.com/in/muhammad-ahsan-sheikh">LinkedIn</a>
       <a class="btn" href="https://github.com/muhammadahsan-30">GitHub</a>
     </div>
   </div>
 
-  <!-- ===== 01 one thread ===== -->
-  <section class="rv">
-    <div class="shead"><span class="snum">01</span><h2>One thread</h2><span class="rule"></span></div>
-    <div class="thread">
-      <div class="tstep">
-        <span class="tn">i.</span>
-        <h3>Inside the agency</h3>
-        <p>Kinetic, the WPP/GroupM out-of-home agency. One of two interns on the rotational
-           programme. Part of the job was reconciling CAD 1m+ of media spend by hand,
-           rebuilding Excel dashboards daily from tracking data.</p>
-        <span class="tt">Katalyst · Excel · Odoo</span>
-      </div>
-      <div class="tstep">
-        <span class="tn">ii.</span>
-        <h3>The problem was structural</h3>
-        <p>Reconciliation found under-delivering sites weeks after the campaigns had ended.
-           Nobody was slow — the process could only run at the end. Structural problems can
-           be built around.</p>
-        <span class="tt">Weeks late, every time</span>
-      </div>
-      <div class="tstep">
-        <span class="tn">iii.</span>
-        <h3>So I built it</h3>
-        <p>A placement-level analyzer that measures every site against the impressions
-           contracted <em>by today</em>, and finds the shortfall while the campaign is still
-           running.</p>
-        <span class="tt"><a href="ooh.html">Python · SQL · live →</a></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 02 flagship ===== -->
-  <section class="rv">
-    <div class="shead"><span class="snum">02</span><h2>Flagship</h2><span class="rule"></span></div>
-    <div class="flag">
-      <!-- The preview follows the reader's theme: the analyzer has its own
-           light and dark modes, so a light screenshot never sits as a bright
-           rectangle on the dark page. -->
+  <!-- ============ 01 OOH ============ -->
+  <section id="ooh" class="rv">
+    <div class="shead"><span class="snum">01</span><h2>OOH Campaign Performance Analyzer</h2><span class="rule"></span></div>
+    <div class="entry">
+      <p class="lede-q">Reconciling media spend inside a WPP/GroupM agency only ever found
+        under-delivering sites <b>after the campaign had ended</b>. This finds them while it is
+        still running — and prices what the shortfall is worth.</p>
       <a class="shot" href="ooh.html">
         <picture>
           <source srcset="assets/ooh-overview-dark.png" media="(prefers-color-scheme:dark)">
           <img src="assets/ooh-overview-light.png" width="1440" height="900" loading="lazy"
                alt="The analyzer's overview: 97.9% delivery to plan, above a bar splitting 595 placements into on-track, completed shortfalls and live issues">
         </picture>
+        <figcaption>The headline reads 97.9%. The line beneath it says what that average is hiding</figcaption>
       </a>
-      <div class="fbody">
-        <h3><a href="ooh.html">OOH Campaign Performance Analyzer</a><span class="badge live">Live</span></h3>
-        <p class="lead">Campaign reporting showed <b>&minus;2.1%</b>. Underneath it, <b>10.5m
-          impressions</b> were short across <b>227 placements</b> — and 14% of the gap was
-          cancelled out on paper by other sites running ahead of plan.</p>
-        <div class="figband">
-          <div class="f"><span class="fv">4 days</span><span class="fl">to flag a fault, against 31 to reconciliation</span></div>
-          <div class="f"><span class="fv">98.1%</span><span class="fl">of faults found from delivery data alone</span></div>
-          <div class="f"><span class="fv">44</span><span class="fl">unit tests on hand-checked inputs</span></div>
+      <p class="proof"><b data-ooh="gross_short">10.5m</b> impressions short under a campaign
+        number reading &minus;2.1% &nbsp;·&nbsp; <b data-ooh="detect_days">4</b> days to flag a
+        fault, against <b data-ooh="recon_days">31</b> to reconciliation
+        &nbsp;·&nbsp; <b>44</b> unit tests<br>
+        Synthetic dataset, fixed seed · Python · SQL · SQLite · pytest</p>
+      <div class="disc on">
+        <button class="disc-t" type="button" aria-expanded="true" aria-controls="d-ooh">View details ↓</button>
+        <div class="disc-p" id="d-ooh" role="region" aria-label="OOH Campaign Performance Analyzer details">
+          <div class="disc-in">
+            <p class="disc-h">Saw</p>
+            <p>Five months at Kinetic, the WPP/GroupM out-of-home agency, one of two interns on
+               the rotational programme. Part of the job was reconciling CAD 1m+ of media spend
+               by hand, rebuilding Excel dashboards daily from tracking-team data.</p>
+            <p class="disc-h">Asked</p>
+            <p>Why does this only ever run at the end? Because the comparison it needs —
+               delivered against contracted — only resolves once the booking is over. That is
+               structural, not clerical, and structural problems can be built around.</p>
+            <p class="disc-h">Built</p>
+            <p>A placement-level analyzer that measures every site against the impressions
+               contracted <em>by today</em>, separates what can still be fixed from what has to
+               be reconciled, and prices both in media value. Python and SQL do the analysis; the
+               browser only renders what the tests already cover.</p>
+            <p class="disc-h">Learned</p>
+            <p>Campaign averages hide more than they show. The book reads <b>&minus;2.1%</b> while
+               <b>10.5m impressions</b> are short across <b>227 placements</b> — 14% of the gap
+               cancelled out on paper by other sites running ahead. One campaign reads &minus;0.1%
+               while 27 of its 70 placements are behind.</p>
+          </div>
         </div>
-        <p class="synth">Synthetic dataset, fixed seed · Python · SQL · SQLite · pytest</p>
-        <div class="links">
-          <a class="btn primary" href="ooh.html">Explore the case study →</a>
-          <a class="btn" href="analyzer/index.html">Open live ↗</a>
-          <a class="btn" href="https://github.com/muhammadahsan-30/ooh-campaign-analyzer" target="_blank" rel="noopener">Source ↗</a>
+      </div>
+      <div class="links">
+        <a class="btn primary" href="ooh.html">Explore the case study →</a>
+        <a class="btn" href="analyzer/index.html">Open live ↗</a>
+        <a class="btn" href="https://github.com/muhammadahsan-30/ooh-campaign-analyzer" target="_blank" rel="noopener">Source ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 Smog ============ -->
+  <section id="smog" class="rv">
+    <div class="shead"><span class="snum">02</span><h2>Smog-Eating Billboard</h2><span class="rule"></span></div>
+    <div class="entry">
+      <p class="lede-q">Lahore has 1,150+ advertising hoardings sitting in some of the worst air
+        on earth. I modelled whether coating them with photocatalytic titanium dioxide would pay
+        for itself — and found <b>the argument that works is commercial, not environmental</b>.</p>
+      <!-- The artifact here is not a mockup. It is a national newspaper running
+           the argument, so the publication itself is the card's visual material. -->
+      <a class="press artifact" href="https://en.dailypakistan.com.pk/16-Oct-2024/smog-eating-technology-is-need-of-the-hour-to-combat-pollution-in-lahore" target="_blank" rel="noopener">
+        <p class="kicker">Daily Pakistan · October 2024</p>
+        <h3>Smog-eating technology is need of the hour to combat pollution in Lahore</h3>
+        <p>Coating Lahore's <span class="num">1,150+</span> ad hoardings (air quality index
+          <span class="num">207</span>) with photocatalytic titanium dioxide would remove
+          pollutants equivalent to <span class="num hi">292,800</span> trees over six hours — and
+          the case for advertisers is commercial before environmental, since smog already forces
+          a costlier cleaning cycle.</p>
+        <span class="go">Read the article ↗</span>
+      </a>
+      <div class="disc on">
+        <button class="disc-t" type="button" aria-expanded="true" aria-controls="d-smog">View details ↓</button>
+        <div class="disc-p" id="d-smog" role="region" aria-label="Smog-Eating Billboard details">
+          <div class="disc-in">
+            <p class="disc-h">Saw</p>
+            <p>Lahore's air quality index hit <span class="num">207</span> in January
+               <span class="num">2024</span>. The city also has over a thousand large advertising
+               surfaces sitting in direct sun — the exact condition photocatalytic coatings need.</p>
+            <p class="disc-h">Asked</p>
+            <p>Would retrofitting them actually move air quality enough to justify the cost, and
+               who would have to pay for it?</p>
+            <p class="disc-h">Built</p>
+            <p>A feasibility model estimating pollutant removal across <b>1,150+ hoardings</b> —
+               equivalent to <b>292,800 trees over six hours</b> — plus a supply-side check that
+               found the binding constraint: titanium dioxide is not produced in Pakistan.</p>
+            <p class="disc-h">Learned</p>
+            <p>The environmental argument does not move a media owner. The cleaning-cycle argument
+               does: smog discolours conventional billboard skins faster, so the replacement cycle
+               already costs more than the coating would. Reframing the case on cost is what made
+               it publishable.</p>
+            <div class="stack"><span class="t-viz">Feasibility modelling</span><span class="t-viz">Cost-Benefit Analysis</span><span class="t-viz">Technical Writing</span></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== 03 selected work ===== -->
-  <section class="rv">
-    <div class="shead"><span class="snum">03</span><h2>Selected work</h2><span class="rule"></span></div>
-
-    <div class="card">
-      <div class="card-top">
-        <h3><a href="https://en.dailypakistan.com.pk/16-Oct-2024/smog-eating-technology-is-need-of-the-hour-to-combat-pollution-in-lahore" target="_blank" rel="noopener">Smog-Eating Billboard</a><span class="badge pub">Published</span></h3>
-        <span class="meta">Oct 2024</span>
-      </div>
-      <figure class="shot">
-        <img src="assets/smog-billboard.jpg" alt="Concept mockup of a photocatalytic billboard in Lahore" loading="lazy">
-      </figure>
-      <p class="masthead">Daily Pakistan · October 2024</p>
-      <p class="sub">Lahore has <span class="num">1,150+</span> advertising hoardings and some of
-        the worst air on earth. I modelled whether coating them would pay for itself.</p>
-      <p class="pullq">The case for advertisers is commercial before environmental — smog already
-        forces a costlier cleaning cycle than the retrofit would.</p>
-      <div class="disc on">
-        <button class="disc-t" type="button" aria-expanded="true" aria-controls="d-smog">View details ↓</button>
-        <div class="disc-p" id="d-smog" role="region" aria-label="Smog-Eating Billboard details">
-          <div class="disc-in">
-            <p class="disc-h">The problem</p>
-            <p>Lahore's air quality index hit <span class="num">207</span> in January
-               <span class="num">2024</span>. The city also has over a thousand large advertising
-               surfaces sitting in direct sun — the exact condition photocatalytic coatings need.</p>
-            <p class="disc-h">What I built</p>
-            <ul>
-              <li>A model estimating pollutant removal from retrofitting <b><span class="num hi">1,150+</span> hoardings</b> — equivalent to <b><span class="num hi">292,800</span> trees over six hours</b></li>
-              <li>A supply-side check that found the binding constraint: titanium dioxide is not produced in Pakistan</li>
-              <li>A cost-benefit case written for the party who would actually pay for it</li>
-            </ul>
-            <p class="disc-h">Why it matters</p>
-            <p>The environmental argument does not move a media owner. The cleaning-cycle
-               argument does — smog discolours conventional billboard skins faster, so the
-               replacement cycle already costs more than the coating would. Reframing the case
-               on cost is what made it publishable.</p>
-            <p class="disc-h">Depth</p>
-            <div class="stack"><span class="t-viz">Feasibility modelling</span><span class="t-viz">Cost-Benefit Analysis</span><span class="t-viz">Technical Writing</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="links">
-        <a class="btn" href="https://en.dailypakistan.com.pk/16-Oct-2024/smog-eating-technology-is-need-of-the-hour-to-combat-pollution-in-lahore" target="_blank" rel="noopener">Read in Daily Pakistan ↗</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-top">
-        <h3><a href="https://barakahlink.vercel.app" target="_blank" rel="noopener">BarakahLink</a><span class="badge live">Live</span></h3>
-        <span class="meta">Jan 2026</span>
-      </div>
-      <p class="sub">Giving platforms assume a smartphone and a stable connection. Many who need
-        them have neither.</p>
+  <!-- ============ 03 BarakahLink ============ -->
+  <section id="barakah" class="rv">
+    <div class="shead"><span class="snum">03</span><h2>BarakahLink</h2><span class="rule"></span></div>
+    <div class="entry">
+      <p class="lede-q">Food-surplus redistribution depends on being <em>local</em>, and the
+        people who most need it are the least likely to have an app and reliable data. Built
+        around <b>SMS access and a food map</b> instead.</p>
       <a class="shot" href="https://barakahlink.vercel.app" target="_blank" rel="noopener">
-        <img src="https://image.thum.io/get/width/1000/crop/620/noanimate/https://barakahlink.vercel.app"
-             alt="The BarakahLink platform, showing nearby donation listings on a map" loading="lazy"
-             onerror="this.closest('.shot').classList.add('noimg')">
-        <figcaption>barakahlink.vercel.app, live</figcaption>
+        <img src="assets/barakahlink.png" width="1280" height="860" loading="lazy"
+             alt="BarakahLink: a community food-support platform for Kitchener-Waterloo, with a food map and SMS support in the navigation">
+        <figcaption>barakahlink.vercel.app — live, serving Kitchener&ndash;Waterloo</figcaption>
       </a>
       <div class="disc on">
         <button class="disc-t" type="button" aria-expanded="true" aria-controls="d-bl">View details ↓</button>
         <div class="disc-p" id="d-bl" role="region" aria-label="BarakahLink details">
           <div class="disc-in">
-            <p class="disc-h">The problem</p>
-            <p>Donation-redistribution works locally or not at all, and the people who most need
-               it are the least likely to have an app and reliable data.</p>
-            <p class="disc-h">What I built</p>
+            <p class="disc-h">Saw</p>
+            <p>Local food surplus and local food need rarely find each other, and the platforms
+               that try to connect them assume a smartphone and a stable connection.</p>
+            <p class="disc-h">Asked</p>
+            <p>What does the product look like if connectivity is the binding constraint rather
+               than an afterthought?</p>
+            <p class="disc-h">Built</p>
             <ul>
-              <li><b>Unstructured input handling.</b> <span class="key">Google Gemini</span> turns messy free-text offers into organised listings and need summaries, written to preserve the dignity of the person asking</li>
               <li><b>SMS-style access</b> through a simulated gateway, so the platform works without an app</li>
-              <li><b>Hyper-local matching</b> so donations surface to people close enough to actually collect them</li>
+              <li><b>Unstructured input handling</b> — <span class="key">Google Gemini</span> turns messy free-text offers into organised listings and need summaries, written to preserve the dignity of the person asking</li>
+              <li><b>Hyper-local matching</b> so surplus surfaces to people close enough to actually collect it</li>
             </ul>
-            <p class="disc-h">Why it matters</p>
-            <p>The constraint that mattered was connectivity, not features. Designing for SMS
-               first changed what the product could be rather than how it looked.</p>
-            <p class="disc-h">Depth</p>
+            <p class="disc-h">Learned</p>
+            <p>Designing for SMS first changed what the product could be, not just how it looked.
+               The constraint turned out to be the brief.</p>
             <div class="stack"><span class="t-lang">TypeScript</span><span class="t-data">Google Gemini API</span><span class="t-lang">Python</span><span class="t-viz">Leaflet</span></div>
           </div>
         </div>
@@ -275,52 +262,28 @@
         <a class="btn" href="https://github.com/muhammadahsan-30/BarakahLink" target="_blank" rel="noopener">Source ↗</a>
       </div>
     </div>
-
-    <div class="links"><a class="btn" href="projects.html">All projects →</a></div>
   </section>
 
-  <!-- ===== 04 published ===== -->
+  <!-- ============ where I've worked ============ -->
   <section class="rv">
-    <div class="shead"><span class="snum">04</span><h2>Published</h2><span class="rule"></span></div>
-    <a class="press" href="https://en.dailypakistan.com.pk/16-Oct-2024/smog-eating-technology-is-need-of-the-hour-to-combat-pollution-in-lahore" target="_blank" rel="noopener">
-      <p class="kicker">Daily Pakistan · October 2024</p>
-      <h3>Smog-eating technology is need of the hour to combat pollution in Lahore</h3>
-      <p>
-        Coating Lahore's <span class="num">1,150+</span> ad hoardings (air quality index
-        <span class="num">207</span>) with photocatalytic titanium
-        dioxide would remove pollutants equivalent to <span class="num hi">292,800</span> trees over six hours — and the case
-        for advertisers is commercial before environmental, since smog already forces a costlier
-        cleaning cycle.
-      </p>
-      <span class="go">Read the article ↗</span>
-    </a>
-  </section>
-
-  <!-- ===== 05 how I work ===== -->
-  <section class="rv">
-    <div class="shead"><span class="snum">05</span><h2>How I work</h2><span class="rule"></span></div>
-    <p class="lede" style="margin-bottom:22px">I combine business understanding, analytics and
-      technology to turn operational problems into practical tools, models and decisions.</p>
-    <div class="howrow">
-      <h3 class="hk">Analytics &amp; data</h3>
-      <p class="hv">Python · pandas · SQL · SQLite · pytest · Excel</p>
-      <p class="he">Used in <a href="ooh.html">OOH Analyzer</a> · <a href="experience.html">KPMG</a></p>
+    <div class="shead"><span class="snum">04</span><h2>Where I've worked</h2><span class="rule"></span></div>
+    <div class="wrow">
+      <span class="wc">KPMG</span><span class="ww">Apr &ndash; Jul 2026</span>
+      <p class="wd">Business Advisory Intern, Deal Advisory. Valuation and three-statement
+        modelling, including an independent valuation supporting a stake transfer between
+        joint-venture partners.</p>
     </div>
-    <div class="howrow">
-      <h3 class="hk">Business &amp; finance</h3>
-      <p class="hv">Valuation · DCF · three-statement modelling · sensitivity analysis</p>
-      <p class="he">Used in <a href="experience.html">KPMG</a> · <a href="projects.html#smog">Smog feasibility</a></p>
+    <div class="wrow">
+      <span class="wc">Kinetic</span><span class="ww">Sep 2024 &ndash; Jan 2025</span>
+      <p class="wd">Business Analyst Intern on the rotational programme at the WPP/GroupM
+        out-of-home agency. Five departments, CAD 1m+ of media spend tracked and reconciled.</p>
     </div>
-    <div class="howrow">
-      <h3 class="hk">Media &amp; campaigns</h3>
-      <p class="hv">Campaign planning · media spend reconciliation · Katalyst · Odoo</p>
-      <p class="he">Used in <a href="experience.html">Kinetic</a> · <a href="ooh.html">OOH Analyzer</a></p>
+    <div class="wrow">
+      <span class="wc">University of Waterloo</span><span class="ww">Sep 2025 &ndash; present</span>
+      <p class="wd">Honours Mathematics and Business Administration (Co-op). President's
+        Scholarship, Term Distinction.</p>
     </div>
-    <div class="howrow">
-      <h3 class="hk">Building</h3>
-      <p class="hv">Vanilla JS · data visualisation · LLM APIs · testing</p>
-      <p class="he">Used in <a href="ooh.html">OOH Analyzer</a> · <a href="projects.html#barakah">BarakahLink</a></p>
-    </div>
+    <div class="links"><a class="btn" href="experience.html">Full experience →</a></div>
   </section>
 
   <div class="closing rv">
@@ -343,8 +306,8 @@
 
 </main>
 <!-- The analyzer payload, for the figures marked data-ooh. Loaded after the
-     page so a slow or blocked fetch never delays render; the hardcoded values
-     stand in until it arrives. -->
+     page so a slow fetch never delays render; the values in the markup are the
+     current correct ones and are what show if the script never arrives. -->
 <script src="analyzer/data.js"></script>
 <script src="assets/site.js"></script>
 </body>

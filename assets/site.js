@@ -43,7 +43,9 @@
       gross_short:    num(s.gross_shortfall, function (v) { return (v / 1e6).toFixed(1) + 'm'; }),
       masking_pct:    num(s.masking_pct, function (v) { return Math.round(v) + '%'; }),
       behind:         num(s.placements_behind, n),
-      detect_days:    num(det.median_detection_delay_days, function (v) { return v.toFixed(1); }),
+      // Whole days unless the median genuinely lands on a half.
+      detect_days:    num(det.median_detection_delay_days,
+                          function (v) { return v % 1 ? v.toFixed(1) : v.toFixed(0); }),
       recon_days:     num(det.median_reconciliation_delay_days, function (v) { return v.toFixed(0); }),
       blended_cpm:    num(s.blended_cpm, function (v) { return 'CAD ' + v.toFixed(2); }),
       as_of:          typeof s.as_of === 'string' ? s.as_of : undefined
