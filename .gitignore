@@ -1,2 +1,6 @@
 .DS_Store
 **/.DS_Store
+
+# Resume stays local and is deliberately not published to the site.
+# The file remains on disk; it is only untracked so GitHub Pages stops serving it.
+resume.pdf
