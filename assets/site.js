@@ -63,6 +63,30 @@
     addEventListener('scroll', onScroll, { passive: true });
   }
 
+  /* ---- progressive disclosure ------------------------------------------
+   * Panels are authored OPEN in the markup and closed here on load, so a
+   * reader with JavaScript disabled or broken gets the full content rather
+   * than a button that does nothing. Nothing is ever trapped behind a script.
+   */
+  document.querySelectorAll('.disc').forEach(function (d) {
+    var btn = d.querySelector('.disc-t');
+    var panel = d.querySelector('.disc-p');
+    if (!btn || !panel) return;
+    var open = d.classList.contains('on');
+    var openLabel = btn.dataset.open || 'Hide details';
+    var shutLabel = btn.dataset.shut || 'View details';
+    var chev = '<span class="chev" aria-hidden="true">\u2193</span>';
+
+    function paint() {
+      d.classList.toggle('on', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.innerHTML = (open ? openLabel : shutLabel) + ' ' + chev;
+    }
+    open = false;
+    paint();
+    btn.addEventListener('click', function () { open = !open; paint(); });
+  });
+
   var targets = document.querySelectorAll('.rv');
   if (!('IntersectionObserver' in window)) {
     targets.forEach(function (el) { el.classList.add('in'); });

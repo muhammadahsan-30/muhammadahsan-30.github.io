@@ -69,12 +69,13 @@
 </script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <div class="topbar" id="topbar">
   <div class="wrap-wide">
     <a class="mark" href="index.html">Muhammad <em>Ahsan Sheikh</em></a>
     <nav class="topnav">
-      <a class="on" href="index.html">About</a>
+      <a class="on" href="index.html" aria-current="page">About</a>
       <a href="projects.html">Projects</a>
       <a href="experience.html">Experience</a>
       <a class="cta" href="contact.html">Contact</a>
@@ -82,17 +83,18 @@
   </div>
 </div>
 
-<main class="wrap">
+<main class="wrap" id="main">
 
   <div class="pagehead">
     <p class="eyebrow">Waterloo, Ontario<span class="badge build avail">Available Jan&ndash;Apr 2027</span></p>
     <div class="hero-flex">
       <div>
         <h1>Muhammad<br>Ahsan Sheikh</h1>
-        <p class="body" style="margin-top:22px">
+        <p class="posline">I learn how a business works,<br>then build <em>what it's missing</em>.</p>
+        <p class="body" style="margin-top:18px">
           <strong>Honours Mathematics and Business Administration</strong> at the University of
-          Waterloo. I build valuation models, plan media campaigns, and write the tools that
-          measure them.
+          Waterloo. Valuation models at KPMG, media campaigns at a WPP/GroupM agency, and the
+          tools that measure them.
         </p>
       </div>
       <div class="portrait-wrap">
@@ -100,19 +102,19 @@
       </div>
     </div>
 
-    <!-- Four figures that each carry a scale a reader can judge, all of them
-         explained in full context on the Experience and Projects pages.
+    <!-- Three figures, all from paid work. The analyzer's CAD 5.4m used to sit
+         here in identical styling, which presented a synthetic project figure as
+         a real-world result; it now lives in the flagship block where its
+         context travels with it.
          CAD 19.5M is the capital ONE partner had deployed into the venture I
          contributed to valuing - not the venture's valuation, and not a deal I
-         led. The pipeline figure is read from the analyzer payload at runtime;
-         the value in the markup is the current correct number and is what
-         shows if the script never loads. -->
+         led. -->
     <div class="statband">
       <div class="stat"><span class="fig">CAD 19.5M</span><span class="lab">Capital in venture valued</span></div>
       <div class="stat"><span class="fig">CAD 1M+</span><span class="lab">Media spend reconciled</span></div>
-      <div class="stat"><span class="fig" data-ooh="spend_m">CAD 5.4M</span><span class="lab">Tracked by my pipeline</span></div>
       <div class="stat"><span class="fig">1 of 2</span><span class="lab">Interns selected</span></div>
     </div>
+    <p class="statnote">From paid work. Project figures appear with the project.</p>
 
     <div class="links">
       <a class="btn primary" href="resume.pdf">Resume</a>
@@ -123,43 +125,163 @@
     </div>
   </div>
 
-  <!-- ===== status ===== -->
-  <div class="status rv">
-    <dl>
-      <dt>Latest</dt>
-      <dd><b>Business Advisory at <span class="key">KPMG</span></b>. <span>Valuation and three-statement modeling inside the Deal Advisory practice.</span> <span class="stamp">Apr&ndash;Jul 2026</span></dd>
-      <dt>Before</dt>
-      <dd><b>One of two interns selected for the rotational program at <span class="key">Kinetic</span></b>, the WPP/GroupM out-of-home agency. <span>Client servicing, planning, execution, finance and IT.</span> <span class="stamp">2024&ndash;25</span></dd>
-      <dt>Building</dt>
-      <dd><b>An OOH campaign analytics pipeline</b>. <span>The reporting tool I wanted while inside the agency. <a href="analyzer/index.html">Live dashboard</a>.</span></dd>
-      <dt>Outside</dt>
-      <dd><b>Water polo captain.</b> <span>Computer Science Society, Entrepreneurial Society.</span></dd>
-    </dl>
-  </div>
-
-  <!-- ===== selected work ===== -->
+  <!-- ===== 01 one thread ===== -->
   <section class="rv">
-    <div class="shead"><span class="snum">01</span><h2>Selected work</h2><span class="rule"></span></div>
-    <dl class="drows">
-      <div class="drow">
-        <dt><a href="projects.html#ooh">OOH Campaign Analyzer</a><span class="badge live">Live</span></dt>
-        <dd><span class="pb"><b>The problem.</b> Agencies find under-delivering advertising inventory by hand, at end of campaign — weeks after anything can be done about it.</span><span class="pb"><b>What I built.</b> A Python and SQL pipeline that ranks it mid-flight, by prorating each contract to the days elapsed, and prices the shortfall.</span></dd>
+    <div class="shead"><span class="snum">01</span><h2>One thread</h2><span class="rule"></span></div>
+    <div class="thread">
+      <div class="tstep">
+        <span class="tn">i.</span>
+        <h3>Inside the agency</h3>
+        <p>Kinetic, the WPP/GroupM out-of-home agency. One of two interns on the rotational
+           programme. Part of the job was reconciling CAD 1m+ of media spend by hand,
+           rebuilding Excel dashboards daily from tracking data.</p>
+        <span class="tt">Katalyst · Excel · Odoo</span>
       </div>
-      <div class="drow">
-        <dt><a href="projects.html#smog">Smog-Eating Billboard</a><span class="badge pub">Published</span></dt>
-        <dd><span class="pb"><b>The problem.</b> Lahore has <span class="num hi">1,150+</span> advertising hoardings and some of the worst air on earth.</span><span class="pb"><b>What I built.</b> A feasibility model and a published article arguing the retrofit on cost grounds.</span></dd>
+      <div class="tstep">
+        <span class="tn">ii.</span>
+        <h3>The problem was structural</h3>
+        <p>Reconciliation found under-delivering sites weeks after the campaigns had ended.
+           Nobody was slow — the process could only run at the end. Structural problems can
+           be built around.</p>
+        <span class="tt">Weeks late, every time</span>
       </div>
-      <div class="drow">
-        <dt><a href="projects.html#barakah">BarakahLink</a><span class="badge live">Live</span></dt>
-        <dd><span class="pb"><b>The problem.</b> Giving platforms assume a smartphone and a stable connection. Many who need them have neither.</span><span class="pb"><b>What I built.</b> An AI-assisted platform with SMS access and hyper-local matching.</span></dd>
+      <div class="tstep">
+        <span class="tn">iii.</span>
+        <h3>So I built it</h3>
+        <p>A placement-level analyzer that measures every site against the impressions
+           contracted <em>by today</em>, and finds the shortfall while the campaign is still
+           running.</p>
+        <span class="tt"><a href="ooh.html">Python · SQL · live →</a></span>
       </div>
-    </dl>
+    </div>
+  </section>
+
+  <!-- ===== 02 flagship ===== -->
+  <section class="rv">
+    <div class="shead"><span class="snum">02</span><h2>Flagship</h2><span class="rule"></span></div>
+    <div class="flag">
+      <!-- The preview follows the reader's theme: the analyzer has its own
+           light and dark modes, so a light screenshot never sits as a bright
+           rectangle on the dark page. -->
+      <a class="shot" href="ooh.html">
+        <picture>
+          <source srcset="assets/ooh-overview-dark.png" media="(prefers-color-scheme:dark)">
+          <img src="assets/ooh-overview-light.png" width="1440" height="900" loading="lazy"
+               alt="The analyzer's overview: 97.9% delivery to plan, above a bar splitting 595 placements into on-track, completed shortfalls and live issues">
+        </picture>
+      </a>
+      <div class="fbody">
+        <h3><a href="ooh.html">OOH Campaign Performance Analyzer</a><span class="badge live">Live</span></h3>
+        <p class="lead">Campaign reporting showed <b>&minus;2.1%</b>. Underneath it, <b>10.5m
+          impressions</b> were short across <b>227 placements</b> — and 14% of the gap was
+          cancelled out on paper by other sites running ahead of plan.</p>
+        <div class="figband">
+          <div class="f"><span class="fv">4 days</span><span class="fl">to flag a fault, against 31 to reconciliation</span></div>
+          <div class="f"><span class="fv">98.1%</span><span class="fl">of faults found from delivery data alone</span></div>
+          <div class="f"><span class="fv">44</span><span class="fl">unit tests on hand-checked inputs</span></div>
+        </div>
+        <p class="synth">Synthetic dataset, fixed seed · Python · SQL · SQLite · pytest</p>
+        <div class="links">
+          <a class="btn primary" href="ooh.html">Explore the case study →</a>
+          <a class="btn" href="analyzer/index.html">Open live ↗</a>
+          <a class="btn" href="https://github.com/muhammadahsan-30/ooh-campaign-analyzer" target="_blank" rel="noopener">Source ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 03 selected work ===== -->
+  <section class="rv">
+    <div class="shead"><span class="snum">03</span><h2>Selected work</h2><span class="rule"></span></div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3><a href="https://en.dailypakistan.com.pk/16-Oct-2024/smog-eating-technology-is-need-of-the-hour-to-combat-pollution-in-lahore" target="_blank" rel="noopener">Smog-Eating Billboard</a><span class="badge pub">Published</span></h3>
+        <span class="meta">Oct 2024</span>
+      </div>
+      <figure class="shot">
+        <img src="assets/smog-billboard.jpg" alt="Concept mockup of a photocatalytic billboard in Lahore" loading="lazy">
+      </figure>
+      <p class="masthead">Daily Pakistan · October 2024</p>
+      <p class="sub">Lahore has <span class="num">1,150+</span> advertising hoardings and some of
+        the worst air on earth. I modelled whether coating them would pay for itself.</p>
+      <p class="pullq">The case for advertisers is commercial before environmental — smog already
+        forces a costlier cleaning cycle than the retrofit would.</p>
+      <div class="disc on">
+        <button class="disc-t" type="button" aria-expanded="true" aria-controls="d-smog">View details ↓</button>
+        <div class="disc-p" id="d-smog" role="region" aria-label="Smog-Eating Billboard details">
+          <div class="disc-in">
+            <p class="disc-h">The problem</p>
+            <p>Lahore's air quality index hit <span class="num">207</span> in January
+               <span class="num">2024</span>. The city also has over a thousand large advertising
+               surfaces sitting in direct sun — the exact condition photocatalytic coatings need.</p>
+            <p class="disc-h">What I built</p>
+            <ul>
+              <li>A model estimating pollutant removal from retrofitting <b><span class="num hi">1,150+</span> hoardings</b> — equivalent to <b><span class="num hi">292,800</span> trees over six hours</b></li>
+              <li>A supply-side check that found the binding constraint: titanium dioxide is not produced in Pakistan</li>
+              <li>A cost-benefit case written for the party who would actually pay for it</li>
+            </ul>
+            <p class="disc-h">Why it matters</p>
+            <p>The environmental argument does not move a media owner. The cleaning-cycle
+               argument does — smog discolours conventional billboard skins faster, so the
+               replacement cycle already costs more than the coating would. Reframing the case
+               on cost is what made it publishable.</p>
+            <p class="disc-h">Depth</p>
+            <div class="stack"><span class="t-viz">Feasibility modelling</span><span class="t-viz">Cost-Benefit Analysis</span><span class="t-viz">Technical Writing</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="links">
+        <a class="btn" href="https://en.dailypakistan.com.pk/16-Oct-2024/smog-eating-technology-is-need-of-the-hour-to-combat-pollution-in-lahore" target="_blank" rel="noopener">Read in Daily Pakistan ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3><a href="https://barakahlink.vercel.app" target="_blank" rel="noopener">BarakahLink</a><span class="badge live">Live</span></h3>
+        <span class="meta">Jan 2026</span>
+      </div>
+      <p class="sub">Giving platforms assume a smartphone and a stable connection. Many who need
+        them have neither.</p>
+      <a class="shot" href="https://barakahlink.vercel.app" target="_blank" rel="noopener">
+        <img src="https://image.thum.io/get/width/1000/crop/620/noanimate/https://barakahlink.vercel.app"
+             alt="The BarakahLink platform, showing nearby donation listings on a map" loading="lazy"
+             onerror="this.closest('.shot').classList.add('noimg')">
+        <figcaption>barakahlink.vercel.app, live</figcaption>
+      </a>
+      <div class="disc on">
+        <button class="disc-t" type="button" aria-expanded="true" aria-controls="d-bl">View details ↓</button>
+        <div class="disc-p" id="d-bl" role="region" aria-label="BarakahLink details">
+          <div class="disc-in">
+            <p class="disc-h">The problem</p>
+            <p>Donation-redistribution works locally or not at all, and the people who most need
+               it are the least likely to have an app and reliable data.</p>
+            <p class="disc-h">What I built</p>
+            <ul>
+              <li><b>Unstructured input handling.</b> <span class="key">Google Gemini</span> turns messy free-text offers into organised listings and need summaries, written to preserve the dignity of the person asking</li>
+              <li><b>SMS-style access</b> through a simulated gateway, so the platform works without an app</li>
+              <li><b>Hyper-local matching</b> so donations surface to people close enough to actually collect them</li>
+            </ul>
+            <p class="disc-h">Why it matters</p>
+            <p>The constraint that mattered was connectivity, not features. Designing for SMS
+               first changed what the product could be rather than how it looked.</p>
+            <p class="disc-h">Depth</p>
+            <div class="stack"><span class="t-lang">TypeScript</span><span class="t-data">Google Gemini API</span><span class="t-lang">Python</span><span class="t-viz">Leaflet</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="links">
+        <a class="btn primary" href="https://barakahlink.vercel.app" target="_blank" rel="noopener">Open live ↗</a>
+        <a class="btn" href="https://github.com/muhammadahsan-30/BarakahLink" target="_blank" rel="noopener">Source ↗</a>
+      </div>
+    </div>
+
     <div class="links"><a class="btn" href="projects.html">All projects →</a></div>
   </section>
 
-  <!-- ===== published writing ===== -->
+  <!-- ===== 04 published ===== -->
   <section class="rv">
-    <div class="shead"><span class="snum">02</span><h2>Published</h2><span class="rule"></span></div>
+    <div class="shead"><span class="snum">04</span><h2>Published</h2><span class="rule"></span></div>
     <a class="press" href="https://en.dailypakistan.com.pk/16-Oct-2024/smog-eating-technology-is-need-of-the-hour-to-combat-pollution-in-lahore" target="_blank" rel="noopener">
       <p class="kicker">Daily Pakistan · October 2024</p>
       <h3>Smog-eating technology is need of the hour to combat pollution in Lahore</h3>
@@ -172,6 +294,33 @@
       </p>
       <span class="go">Read the article ↗</span>
     </a>
+  </section>
+
+  <!-- ===== 05 how I work ===== -->
+  <section class="rv">
+    <div class="shead"><span class="snum">05</span><h2>How I work</h2><span class="rule"></span></div>
+    <p class="lede" style="margin-bottom:22px">I combine business understanding, analytics and
+      technology to turn operational problems into practical tools, models and decisions.</p>
+    <div class="howrow">
+      <h3 class="hk">Analytics &amp; data</h3>
+      <p class="hv">Python · pandas · SQL · SQLite · pytest · Excel</p>
+      <p class="he">Used in <a href="ooh.html">OOH Analyzer</a> · <a href="experience.html">KPMG</a></p>
+    </div>
+    <div class="howrow">
+      <h3 class="hk">Business &amp; finance</h3>
+      <p class="hv">Valuation · DCF · three-statement modelling · sensitivity analysis</p>
+      <p class="he">Used in <a href="experience.html">KPMG</a> · <a href="projects.html#smog">Smog feasibility</a></p>
+    </div>
+    <div class="howrow">
+      <h3 class="hk">Media &amp; campaigns</h3>
+      <p class="hv">Campaign planning · media spend reconciliation · Katalyst · Odoo</p>
+      <p class="he">Used in <a href="experience.html">Kinetic</a> · <a href="ooh.html">OOH Analyzer</a></p>
+    </div>
+    <div class="howrow">
+      <h3 class="hk">Building</h3>
+      <p class="hv">Vanilla JS · data visualisation · LLM APIs · testing</p>
+      <p class="he">Used in <a href="ooh.html">OOH Analyzer</a> · <a href="projects.html#barakah">BarakahLink</a></p>
+    </div>
   </section>
 
   <div class="closing rv">

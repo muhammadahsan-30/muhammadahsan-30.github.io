@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <div class="topbar" id="topbar">
   <div class="wrap-wide">
@@ -30,18 +31,19 @@
     <nav class="topnav">
       <a href="index.html">About</a>
       <a href="projects.html">Projects</a>
-      <a class="on" href="experience.html">Experience</a>
+      <a class="on" href="experience.html" aria-current="page">Experience</a>
       <a class="cta" href="contact.html">Contact</a>
     </nav>
   </div>
 </div>
 
-<main class="wrap">
+<main class="wrap" id="main">
 
   <div class="pagehead">
     <p class="eyebrow">Experience</p>
     <h1>The work<br><em>so far</em></h1>
-    <p class="lede">A Big Four advisory practice and a global media agency.</p>
+    <p class="lede">A Big Four advisory practice, a global media agency, and the projects they
+      led to.</p>
   </div>
 
   <!-- ===== KPMG ===== -->
@@ -55,14 +57,20 @@
         </div>
         <span class="when">Apr to Jul 2026</span>
       </div>
-      <ul>
-        <li><b>Training.</b> Built two feasibility models end to end: a <b class="num">10-year</b> coffee shop DCF at a <b><span class="num hi">16.38%</span> WACC</b>, stress-tested at <b class="num">±5%</b> on revenue and cost across best, base and worst cases; and a <b><span class="num">12-year</span>, four-city</b> restaurant rollout with independent escalators for revenue, cost, capex and salaries.</li>
-        <li>Contributed to an <b>independent valuation of <span class="key">Nishat Sutas Dairy Limited</span></b>, a Pakistan-Türkiye dairy joint venture carrying sustained operating losses, performed for both shareholders to support a stake transfer between the partners. I built Excel models to estimate fair value and inform negotiation.</li>
-        <li>Supported senior advisors with <b>financial reporting and analysis</b> across engagements spanning energy, infrastructure and dairy, down to the underlying journal entries</li>
-        <li>Wrote research memos and client-ready presentations from the financial analysis</li>
-      </ul>
+      <p class="detail">Valuation and three-statement modelling inside the Deal Advisory
+        practice — including an independent valuation of a Pakistan&ndash;Türkiye dairy joint
+        venture, performed for both shareholders to support a stake transfer between them.</p>
       <div class="stack"><span class="t-viz">Valuation</span><span class="t-viz">DCF</span><span class="t-viz">Three-Statement Modeling</span><span class="t-viz">Sensitivity Analysis</span><span class="t-data">Excel</span><span class="t-viz">Research Memos</span></div>
-
+      <div class="disc on">
+        <button class="disc-t" type="button" aria-expanded="true" aria-controls="d-kpmg">View details ↓</button>
+        <div class="disc-p" id="d-kpmg" role="region" aria-label="KPMG details">
+          <div class="disc-in">
+            <ul>
+              <li><b>Training.</b> Built two feasibility models end to end: a <b class="num">10-year</b> coffee shop DCF at a <b><span class="num hi">16.38%</span> WACC</b>, stress-tested at <b class="num">±5%</b> on revenue and cost across best, base and worst cases; and a <b><span class="num">12-year</span>, four-city</b> restaurant rollout with independent escalators for revenue, cost, capex and salaries.</li>
+              <li>Contributed to an <b>independent valuation of <span class="key">Nishat Sutas Dairy Limited</span></b>, a joint venture carrying sustained operating losses. I built Excel models to estimate fair value and inform negotiation.</li>
+              <li>Supported senior advisors with <b>financial reporting and analysis</b> across engagements spanning energy, infrastructure and dairy, down to the underlying journal entries</li>
+              <li>Wrote research memos and client-ready presentations from the financial analysis</li>
+            </ul>
       <div class="facts">
         <p class="fhead">Nishat Sutas Dairy: public context</p>
         <dl>
@@ -91,31 +99,15 @@
           <a href="https://profit.pakistantoday.com.pk/2025/11/27/nishat-mills-plans-solar-expansion-yarn-capacity-boost-and-up-to-rs5bn-investment-in-dairy-unit" target="_blank" rel="noopener">Profit</a>.
         </p>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== education ===== -->
-  <section class="rv">
-    <div class="shead"><span class="snum">02</span><h2>Education</h2><span class="rule"></span></div>
-    <div class="job">
-      <div class="job-top">
-        <div>
-          <h3>University of Waterloo</h3>
-          <p class="role">Honours Mathematics and Business Administration (Co-op)</p>
+          </div>
         </div>
-        <span class="when">Sep 2025 to present</span>
       </div>
-      <ul>
-        <li><b>Awards.</b> President's Scholarship, Term Distinction.</li>
-        <li><b>Coursework.</b> Financial and Managerial Accounting, Business Law, Microeconomics, Macroeconomics, Business Entrepreneurship, Interpersonal Communication, Introduction to Computer Science (Python, Racket), Calculus <span class="num">1&ndash;3</span>, Linear Algebra <span class="num">1&ndash;2</span></li>
-      </ul>
-      <div class="stack"><span class="t-lang">Python</span><span class="t-data">pandas</span><span class="t-lang">SQL</span><span class="t-data">SQLite</span><span class="t-data">pytest</span><span class="t-data">Excel</span><span class="t-data">LLM API integration</span></div>
     </div>
   </section>
 
   <!-- ===== Kinetic ===== -->
   <section class="rv">
-    <div class="shead"><span class="snum">03</span><h2>Media analytics</h2><span class="rule"></span></div>
+    <div class="shead"><span class="snum">02</span><h2>Media analytics</h2><span class="rule"></span></div>
     <div class="job">
       <div class="job-top">
         <div>
@@ -124,16 +116,86 @@
         </div>
         <span class="when">Sep 2024 to Jan 2025</span>
       </div>
-      <p class="detail">
-        Pakistan's market leader in out-of-home planning, part of the WPP/GroupM network. I was
-        one of two interns selected, and rotated through five departments.
-      </p>
-      <ul>
-        <li><b>Client servicing and planning.</b> Worked incoming client briefs, then planned against them in <b class="key">Katalyst</b>, Kinetic's proprietary and industry-first platform, across an inventory of <b><span class="num hi">12,000+</span> outdoor sites</b> with competitor data attached — and saw how agency teams build and hold the relationships those briefs come from.</li>
-        <li><b>Execution and finance.</b> Coordinated supply side and vendors to get booked plans into market, and assisted with the invoicing, cash-flow tracking and record-keeping behind them in <b class="key">Odoo</b>.</li>
-        <li><b>Throughout.</b> Tracked and reconciled over <b>CAD <span class="num hi">1m+</span> (PKR <span class="num">200m</span>)</b> in media spend across <b>three national campaigns</b> for two blue-chip clients, rebuilding Excel dashboards daily from tracking-team data on reach, impressions and return on ad spend, feeding client pitch and review decks.</li>
-      </ul>
+      <p class="detail">Pakistan's market leader in out-of-home planning, part of the WPP/GroupM
+        network. One of two interns selected, rotated through five departments, and tracked
+        <b>CAD <span class="num hi">1m+</span></b> of media spend across three national campaigns
+        for two blue-chip clients.</p>
       <div class="stack"><span class="t-viz">Excel Dashboards</span><span class="t-data">Katalyst</span><span class="t-viz">Media Spend Reconciliation</span><span class="t-data">Odoo (ERP)</span><span class="t-viz">Campaign Analysis</span></div>
+      <p class="ledto">→ led directly to the <a href="ooh.html">OOH Campaign Performance Analyzer</a></p>
+      <div class="disc on">
+        <button class="disc-t" type="button" aria-expanded="true" aria-controls="d-kin">View details ↓</button>
+        <div class="disc-p" id="d-kin" role="region" aria-label="Kinetic details">
+          <div class="disc-in">
+            <ul>
+              <li><b>Client servicing and planning.</b> Worked incoming client briefs, then planned against them in <b class="key">Katalyst</b>, Kinetic's proprietary and industry-first platform, across an inventory of <b><span class="num hi">12,000+</span> outdoor sites</b> with competitor data attached — and saw how agency teams build and hold the relationships those briefs come from.</li>
+              <li><b>Execution and finance.</b> Coordinated supply side and vendors to get booked plans into market, and assisted with the invoicing, cash-flow tracking and record-keeping behind them in <b class="key">Odoo</b>.</li>
+              <li><b>Throughout.</b> Reconciled over <b>CAD <span class="num hi">1m+</span> (PKR <span class="num">200m</span>)</b> in media spend, rebuilding Excel dashboards daily from tracking-team data on reach, impressions and return on ad spend, feeding client pitch and review decks.</li>
+            </ul>
+            <p class="disc-h">What it led to</p>
+            <p>That reconciliation only ever ran at the end of a campaign — weeks after anything
+              could be done about an under-delivering site. The problem was structural rather
+              than clerical, which is what made it worth building around.
+              <a href="ooh.html">Read the case study →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Justdiggit ===== -->
+  <section class="rv">
+    <div class="shead"><span class="snum">03</span><h2>Research</h2><span class="rule"></span></div>
+    <div class="job">
+      <div class="job-top">
+        <div>
+          <h3>Justdiggit</h3>
+          <p class="role">Funder research, Kijani regreening app</p>
+        </div>
+        <span class="when">Jun to Aug 2024</span>
+      </div>
+      <p class="detail">Landscape restoration in Africa; my part was fundraising research —
+        screening corporate and philanthropic prospects against mission fit and giving capacity,
+        and building the priority outreach list the team worked from.</p>
+      <div class="stack"><span class="t-viz">Funder Research</span><span class="t-viz">Market Analysis</span><span class="t-viz">Research Briefs</span><span class="t-viz">Outreach Strategy</span></div>
+      <div class="disc on">
+        <button class="disc-t" type="button" aria-expanded="true" aria-controls="d-jd">View details ↓</button>
+        <div class="disc-p" id="d-jd" role="region" aria-label="Justdiggit details">
+          <div class="disc-in">
+            <ul>
+              <li>Owned funder research for the <b class="key">Kijani regreening app</b>, screening prospects against mission fit and giving capacity</li>
+              <li>Built the priority outreach list the team worked from, separating funders who <em>could</em> give from funders who would</li>
+              <li>Wrote the research briefs behind that shortlist, turning funder mandates and giving histories into a case for why each prospect would back landscape restoration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== education ===== -->
+  <section class="rv">
+    <div class="shead"><span class="snum">04</span><h2>Education</h2><span class="rule"></span></div>
+    <div class="job">
+      <div class="job-top">
+        <div>
+          <h3>University of Waterloo</h3>
+          <p class="role">Honours Mathematics and Business Administration (Co-op)</p>
+        </div>
+        <span class="when">Sep 2025 to present</span>
+      </div>
+      <p class="detail">President's Scholarship and Term Distinction.</p>
+      <div class="stack"><span class="t-lang">Python</span><span class="t-data">pandas</span><span class="t-lang">SQL</span><span class="t-data">SQLite</span><span class="t-data">pytest</span><span class="t-data">Excel</span><span class="t-data">LLM API integration</span></div>
+      <div class="disc on">
+        <button class="disc-t" type="button" aria-expanded="true" aria-controls="d-uw">View details ↓</button>
+        <div class="disc-p" id="d-uw" role="region" aria-label="University of Waterloo details">
+          <div class="disc-in">
+            <ul>
+              <li><b>Awards.</b> President's Scholarship, Term Distinction.</li>
+              <li><b>Coursework.</b> Financial and Managerial Accounting, Business Law, Microeconomics, Macroeconomics, Business Entrepreneurship, Interpersonal Communication, Introduction to Computer Science (Python, Racket), Calculus <span class="num">1&ndash;3</span>, Linear Algebra <span class="num">1&ndash;2</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
